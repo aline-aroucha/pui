@@ -1,0 +1,48 @@
+# PUI — regras para agentes de IA
+
+Este projeto usa o **PUI**, um design system sobre shadcn/ui + Tailwind v4.
+Documentação completa (tokens, componentes, prévias): https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4
+Cópia local: `docs/guidelines.md`, `docs/components/*.md`, `tokens/tokens.json`.
+
+## Sempre
+
+- Use componentes de `@/components/ui/*`. Se faltar, rode `npx shadcn@latest add <componente>`. Não recrie componentes que o shadcn já tem.
+- Cores **somente** por classes semânticas: `bg-background`, `text-foreground`, `bg-card`, `bg-primary text-primary-foreground`,
+  `bg-secondary`, `bg-muted text-muted-foreground`, `bg-accent text-accent-foreground`, `bg-destructive text-destructive-foreground`,
+  `bg-success text-success-foreground`, `bg-warning text-warning-foreground`, `border-border`, `border-input`, `ring-ring`,
+  `fill-chart-1`…`fill-chart-5`.
+- Todo fundo colorido usa o seu par `*-foreground` para o texto.
+- Espaçamento na escala 4px: `gap-1 gap-2 gap-3 gap-4 gap-6 gap-8`, `p-4 p-6`, `py-12`.
+- Raios: `rounded-md` (controles), `rounded-lg` (alert, popover, dialog), `rounded-xl` (card), `rounded-full` (avatar, switch).
+- Texto de interface: `text-sm`. Títulos: `text-4xl/3xl/2xl/xl font-semibold tracking-tight` (h1 é `font-extrabold`).
+- Números em tabela: `text-right font-mono tabular-nums`. Formato pt-BR: `R$ 1.280,00`, `21/10/2026`.
+- Ícones: `lucide-react`, `size-4` em botões e campos.
+- Interface em português do Brasil, sentence case, verbos claros nos botões ("Salvar alterações").
+- Acessibilidade: `Label` em todo campo, `aria-label` em botão só com ícone, status com ícone ou palavra além da cor.
+
+## Nunca
+
+- Hex, `rgb()`, `hsl()` ou cores da paleta Tailwind (`bg-teal-600`, `text-gray-500`, `bg-white`, `text-black`) em componentes.
+- `dark:` para trocar cores: os tokens já mudam com a classe `.dark`.
+- Valores arbitrários de espaçamento ou raio (`p-[13px]`, `rounded-[10px]`).
+- Mais de um `Button` `variant="default"` na mesma área.
+- Card dentro de Card; borda colorida lateral para destacar card; emoji na interface; gradientes.
+
+## Variantes por intenção
+
+| Intenção | Componente |
+| --- | --- |
+| Ação principal | `<Button>` |
+| Ação de apoio | `<Button variant="secondary">` ou `"outline"` |
+| Cancelar / baixa ênfase | `<Button variant="ghost">` |
+| Ação irreversível | `<Button variant="destructive">` dentro de `AlertDialog` |
+| Status ok / pendente / erro | `<Badge variant="success" \| "warning" \| "destructive">` |
+| Mensagem persistente | `<Alert>` |
+| Aviso após uma ação | `toast()` do Sonner |
+| Configuração com efeito imediato | `<Switch>` |
+| Opção salva com o formulário | `<Checkbox>` |
+
+## Ao alterar tokens
+
+`tokens/tokens.json` é a fonte. Atualize `src/styles/globals.css` e `registry.json` com os mesmos valores
+e publique a documentação de novo. Mantenha contraste ≥ 4,5:1 para texto e ≥ 3:1 para bordas de campo e foco, nos dois temas.

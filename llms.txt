@@ -1,0 +1,27 @@
+# PUI
+
+> Design system sobre shadcn/ui + Tailwind v4. Neutros levemente esverdeados e uma cor de marca (verde-petróleo `primary`). Interface em pt-BR.
+
+## Docs
+- [Documentação publicada](https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4): tokens, tipografia, componentes com prévia ao vivo
+- [Regras para agentes](AGENTS.md): o que sempre e nunca fazer
+- [Guia completo](docs/guidelines.md)
+- [Tokens](tokens/tokens.json): cores (claro/escuro), tipografia, espaçamento, raio, sombra
+- [CSS](src/styles/globals.css): tokens como CSS variables do shadcn
+
+## Componentes
+- [Button](docs/components/button.md)
+- [Badge](docs/components/badge.md)
+- [Input](docs/components/input.md)
+- [Textarea](docs/components/textarea.md)
+- [Label](docs/components/label.md)
+- [Select](docs/components/select.md)
+- [Checkbox](docs/components/checkbox.md)
+- [Switch](docs/components/switch.md)
+- [Card](docs/components/card.md)
+- [Alert](docs/components/alert.md)
+- [Tabs](docs/components/tabs.md)
+- [Table](docs/components/table.md)
+- [Separator](docs/components/separator.md)
+- [Skeleton](docs/components/skeleton.md)
+- [Avatar](docs/components/avatar.md)
