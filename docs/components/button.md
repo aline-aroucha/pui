@@ -1,23 +1,27 @@
 # Button
 
-Dispara uma ação. É o `Button` do shadcn/ui (`npx shadcn@latest add button`), com as cores PUI vindas dos tokens.
+Triggers an action.
 
-## O que você fornece
-- `children`: um verbo no infinitivo ou imperativo que diz o que acontece ("Salvar alterações", "Excluir projeto"). Até 3 palavras.
+```bash
+npx github:aline-aroucha/pui add button
+```
+
+## What you provide
+- `children`: a verb that says what happens ("Save changes", "Delete project"). Three words at most.
 - `variant`: `default` | `secondary` | `outline` | `ghost` | `destructive` | `link`.
-- `size`: `default` (36px) | `sm` (32px) | `lg` (40px) | `icon` (36×36, exige `aria-label`).
-- `asChild` (no shadcn) para renderizar um `<a>` / `<Link>` com o visual de botão.
+- `size`: `xs` (24px) | `sm` (32px) | `default` (36px) | `lg` (40px); icon-only: `icon-xs` | `icon-sm` | `icon` | `icon-lg` (requires `aria-label`).
+- `asChild` to render an `<a>` / `<Link>` that looks like a button.
 
-## Quando usar cada variante
-- `default` (primary): a ação principal. **Uma por área visível** (card, diálogo, toolbar).
-- `secondary`: ações de apoio ao lado da principal.
-- `outline`: ações neutras em toolbars, filtros, exportar.
-- `ghost`: ações de baixa ênfase em listas e menus; "Cancelar" em diálogos.
-- `destructive`: só para ações irreversíveis. Sempre confirme com `AlertDialog`.
-- `link`: navegação dentro de texto.
+## When to use each variant
+- `default` (primary): the main action. **One per visible area** (card, dialog, toolbar).
+- `secondary`: supporting actions next to the main one.
+- `outline`: neutral actions in toolbars, filters, export.
+- `ghost`: low-emphasis actions in lists and menus; "Cancel" in dialogs.
+- `destructive`: irreversible actions only. Always confirm with `AlertDialog`.
+- `link`: navigation inside text.
 
-## Faça / não faça
-- Faça: ícone `lucide-react` de 16px à esquerda do texto, com `gap-2` automático.
-- Faça: ordem nos rodapés = secundária à esquerda, primária à direita.
-- Não faça: classes de cor soltas (`bg-teal-600`); mude a aparência só por `variant`.
-- Não faça: dois botões `default` lado a lado.
+## Do / don't
+- Do: put a 16px `lucide-react` icon before the label; `gap-2` is built in.
+- Do: in footers, secondary on the left, primary on the right.
+- Don't: add loose color classes (`bg-teal-600`); change the look only through `variant`.
+- Don't: place two `default` buttons side by side.

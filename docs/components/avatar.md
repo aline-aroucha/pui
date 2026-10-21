@@ -1,8 +1,12 @@
 # Avatar
 
-Foto ou iniciais de uma pessoa. É o `Avatar` do shadcn/ui (`AvatarImage`, `AvatarFallback`).
+A person's photo or initials. Parts: `AvatarImage`, `AvatarFallback`.
 
-## O que você fornece
-- `AvatarImage` com `src` e `alt` = nome da pessoa; `AvatarFallback` com 2 iniciais.
-- Tamanho padrão 32px (`size-8`); listas densas 24px; perfil 64px.
-- Ao lado do avatar, nome em `font-medium` e detalhe em `text-muted-foreground`.
+```bash
+npx github:aline-aroucha/pui add avatar
+```
+
+## What you provide
+- `AvatarImage` with `src` and `alt` = the person's name; `AvatarFallback` with two initials.
+- `size`: `sm` | `default` (32px) | `lg`.
+- Next to the avatar, the name in `font-medium` and a detail in `text-muted-foreground`.

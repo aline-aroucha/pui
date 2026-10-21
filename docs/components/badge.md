@@ -1,16 +1,16 @@
 # Badge
 
-Rótulo curto de status ou categoria. É o `Badge` do shadcn/ui com duas variantes extras do PUI: `success` e `warning`.
+Short status or category label.
 
-## O que você fornece
-- `children`: 1–2 palavras. Para status, comece com um ícone ou símbolo (✓, !, ×) para que a cor não seja o único sinal.
-- `variant`: `default` | `secondary` | `outline` | `destructive` | `success` | `warning`.
+```bash
+npx github:aline-aroucha/pui add badge
+```
 
-## Uso
-- Status de registros em tabelas: `success` (pago, ativo), `warning` (pendente), `destructive` (recusado, erro), `secondary` (rascunho, inativo).
-- Versões, tags e contagens: `outline`.
-- Não use Badge como botão. Se for clicável, use `Button size="sm" variant="outline"`.
+## What you provide
+- `children`: one or two words. For status, start with an icon or symbol (✓, !, ×) so color is never the only signal.
+- `variant`: `default` | `secondary` | `outline` | `ghost` | `link` | `destructive` | `success` | `warning`.
 
-## Instalação das variantes PUI
-Em `components/ui/badge.tsx`, adicione ao `cva`:
-`success: "bg-success text-success-foreground"` e `warning: "bg-warning text-warning-foreground"`.
+## Usage
+- Record status in tables: `success` (paid, active), `warning` (pending), `destructive` (declined, error), `secondary` (draft, inactive).
+- Versions, tags and counts: `outline`.
+- Don't use a Badge as a button. If it is clickable, use `Button size="sm" variant="outline"`.

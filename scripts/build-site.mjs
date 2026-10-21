@@ -1,5 +1,5 @@
-// Gera o site de documentação do PUI em _site/ a partir de tokens/, docs/ e preview/.
-// Uso: SITE_URL=https://usuario.github.io/pui node scripts/build-site.mjs
+// Builds the PUI documentation site into _site/ from tokens/, docs/ and preview/.
+// Usage: SITE_URL=https://user.github.io/pui node scripts/build-site.mjs
 import { readFileSync, writeFileSync, mkdirSync, cpSync, readdirSync, existsSync } from "node:fs"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -23,7 +23,7 @@ const components = readdirSync(join(root, "preview/examples")).map((f) => f.repl
 // ------------------------------------------------------------ tokens.css
 const cssValue = (v) => (v.startsWith("{") ? `var(--${v.slice(1, -1)})` : v)
 const tokensCss = [
-  "/* PUI — gerado de tokens/tokens.json */",
+  "/* PUI — generated from tokens/tokens.json */",
   ":root, .light-scope {",
   ...colors.map((t) => `  --${t.name}: ${cssValue(t.value.light)};`),
   "}",
@@ -43,9 +43,9 @@ const tokensCss = [
 
 // ------------------------------------------------------------ layout
 const NAV = [
-  ["Começar", [["index.html", "Visão geral"], ["ia.html", "Usar com IA"]]],
-  ["Fundamentos", [["cores.html", "Cores"], ["tipografia.html", "Tipografia"], ["espacamento.html", "Espaçamento, raio e sombra"]]],
-  ["Componentes", components.map((c) => [`componentes/${c.toLowerCase()}.html`, c])],
+  ["Get started", [["index.html", "Overview"], ["ai.html", "Use with AI"]]],
+  ["Foundations", [["colors.html", "Colors"], ["typography.html", "Typography"], ["spacing.html", "Spacing, radius and shadow"]]],
+  ["Components", components.map((c) => [`components/${c.toLowerCase()}.html`, c])],
 ]
 
 function page(path, title, body, { scripts = "" } = {}) {
@@ -58,12 +58,12 @@ function page(path, title, body, { scripts = "" } = {}) {
         .join("")}</div>`
   ).join("")
   return `<!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title === "PUI" ? "PUI" : `${esc(title)} · PUI`}</title>
-<meta name="description" content="PUI: design system sobre shadcn/ui, com tokens, componentes e regras para agentes de IA.">
+<meta name="description" content="PUI: a design system with tokens, components and rules for AI agents.">
 <link rel="alternate" type="text/plain" title="llms.txt" href="${base}llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Geist:wght@400;500;600;800&family=Geist+Mono:wght@400;600&display=swap">
@@ -78,12 +78,12 @@ function page(path, title, body, { scripts = "" } = {}) {
   <span class="brand-sub">design system</span>
   <div class="topbar-actions">
     ${REPO_URL ? `<a class="pui-btn pui-btn--ghost pui-btn--size-sm" href="${esc(REPO_URL)}">GitHub</a>` : ""}
-    <button class="pui-btn pui-btn--outline pui-btn--size-sm" id="theme-toggle" type="button">Tema escuro</button>
+    <button class="pui-btn pui-btn--outline pui-btn--size-sm" id="theme-toggle" type="button">Dark theme</button>
     <button class="pui-btn pui-btn--ghost pui-btn--size-sm menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Menu</button>
   </div>
 </header>
 <div class="shell">
-  <nav class="sidebar" id="sidebar" aria-label="Documentação">${nav}</nav>
+  <nav class="sidebar" id="sidebar" aria-label="Documentation">${nav}</nav>
   <main class="content">${body}</main>
 </div>
 <script src="${base}assets/site.js"></script>
@@ -96,15 +96,15 @@ ${scripts}
 // ------------------------------------------------------------ pages
 const md = (s) => marked.parse(s)
 
-// visão geral
+// overview
 const guide = read("docs/guidelines.md").replace(/^# .*\n/, "")
 const cover = `<section class="hero">
   <div class="hero-text">
     <h1>PUI</h1>
-    <p>Design system sobre shadcn/ui: tokens, componentes e regras prontos para pessoas e IAs.</p>
+    <p>A design system with tokens, components and rules ready for people and AI agents.</p>
     <div class="pui-row">
-      <a class="pui-btn pui-btn--default" href="ia.html">Usar com IA</a>
-      <a class="pui-btn pui-btn--outline" href="componentes/button.html">Ver componentes</a>
+      <a class="pui-btn pui-btn--default" href="ai.html">Use with AI</a>
+      <a class="pui-btn pui-btn--outline" href="components/button.html">Browse components</a>
     </div>
   </div>
   <svg class="hero-art" viewBox="480 0 480 288" aria-hidden="true">
@@ -128,39 +128,40 @@ const cover = `<section class="hero">
 </section>`
 write("index.html", page("index.html", "PUI", cover + `<article class="prose">${md(guide)}</article>`))
 
-// usar com IA
+// use with AI
 const u = (p) => (SITE_URL ? `${SITE_URL}/${p}` : p)
 const copyRow = (label, value) =>
-  `<div class="copy-row"><div><div class="copy-label">${label}</div><code>${esc(value)}</code></div><button class="pui-btn pui-btn--outline pui-btn--size-sm" type="button" data-copy="${esc(value)}">Copiar</button></div>`
-const iaBody = `<article class="prose">
-<h1>Usar com IA</h1>
-<p class="lead">O PUI publica, junto com este site, arquivos em texto puro feitos para agentes de IA lerem. Aponte o seu agente para eles.</p>
-<h2>Arquivos para agentes</h2>
-${copyRow("Índice para LLMs", u("llms.txt"))}
-${copyRow("Toda a documentação em um arquivo", u("llms-full.txt"))}
-${copyRow("Regras do projeto (AGENTS.md)", u("AGENTS.md"))}
-${copyRow("Tokens em JSON", u("tokens.json"))}
-${copyRow("CSS com os tokens (globals.css)", u("globals.css"))}
-<h2>Instalar no projeto com o shadcn</h2>
-<p>O tema e o Badge com as variantes PUI estão no registry do shadcn publicado neste site.</p>
-${copyRow("Tema PUI", `npx shadcn@latest add ${u("r/pui-theme.json")}`)}
-${copyRow("Badge PUI", `npx shadcn@latest add ${u("r/pui-badge.json")}`)}
-<h2>Deixar o agente seguir as regras</h2>
+  `<div class="copy-row"><div><div class="copy-label">${label}</div><code>${esc(value)}</code></div><button class="pui-btn pui-btn--outline pui-btn--size-sm" type="button" data-copy="${esc(value)}">Copy</button></div>`
+const aiBody = `<article class="prose">
+<h1>Use with AI</h1>
+<p class="lead">Alongside this site, PUI publishes plain-text files made for AI agents to read. Point your agent at them.</p>
+<h2>Install in a project</h2>
+<p>The <code>pui</code> command sets up a React + Tailwind v4 project and adds components from the PUI registry.</p>
+${copyRow("Set up the project (theme, cn(), AGENTS.md, CLAUDE.md)", "npx github:aline-aroucha/pui init")}
+${copyRow("Add components", "npx github:aline-aroucha/pui add button card input")}
+${copyRow("Add every component", "npx github:aline-aroucha/pui add --all")}
+<h2>Files for agents</h2>
+${copyRow("Index for LLMs", u("llms.txt"))}
+${copyRow("All documentation in one file", u("llms-full.txt"))}
+${copyRow("Project rules (AGENTS.md)", u("AGENTS.md"))}
+${copyRow("Tokens as JSON", u("tokens.json"))}
+${copyRow("CSS with the tokens (globals.css)", u("globals.css"))}
+<h2>Make the agent follow the rules</h2>
 <ol>
-<li>Copie <code>AGENTS.md</code> para a raiz do projeto. O Claude Code lê <code>CLAUDE.md</code>; crie um com a linha <code>@AGENTS.md</code>.</li>
-<li>No Cursor, salve o mesmo texto em <code>.cursor/rules/pui.mdc</code>. No GitHub Copilot, em <code>.github/copilot-instructions.md</code>.</li>
-<li>Para o agente buscar componentes sozinho, registre o PUI no <code>components.json</code> e ative o MCP do shadcn (<code>npx shadcn@latest mcp init</code>).</li>
+<li><code>pui init</code> writes <code>AGENTS.md</code> and a <code>CLAUDE.md</code> that imports it, so Claude Code and Codex pick up the rules automatically.</li>
+<li>For Cursor, save the same text as <code>.cursor/rules/pui.mdc</code>. For GitHub Copilot, as <code>.github/copilot-instructions.md</code>.</li>
+<li>To let the agent find and install components on its own, <code>pui init</code> registers PUI in <code>components.json</code>; turn on the shadcn MCP with <code>npx shadcn@latest mcp init</code>.</li>
 </ol>
 <pre><code>${esc(JSON.stringify({ registries: { "@pui": u("r/{name}.json") } }, null, 2))}</code></pre>
-<p>Com isso, pedidos como “adicione o badge do @pui” ou “monte uma tela de pedidos com os componentes PUI” já usam os tokens e as regras deste design system.</p>
-<h2>Prompt inicial sugerido</h2>
-<pre><code>${esc(`Use o design system PUI. Leia ${u("llms-full.txt")} antes de começar.
-Use só componentes de @/components/ui (shadcn), cores só por token (bg-primary, text-muted-foreground…),
-interface em pt-BR e uma ação primária por área.`)}</code></pre>
+<p>Requests like “add the @pui badge” or “build an orders page with PUI components” then use the tokens and rules of this design system.</p>
+<h2>Suggested first prompt</h2>
+<pre><code>${esc(`Use the PUI design system. Read ${u("llms-full.txt")} before you start.
+Use only components from @/components/ui, color only through tokens (bg-primary, text-muted-foreground…),
+US English UI copy and one primary action per area.`)}</code></pre>
 </article>`
-write("ia.html", page("ia.html", "Usar com IA", iaBody))
+write("ai.html", page("ai.html", "Use with AI", aiBody))
 
-// cores
+// colors
 const swatch = (t, theme) => {
   const v = t.value[theme]
   const label = v.startsWith("{") ? `→ ${v.slice(1, -1)}` : v
@@ -172,16 +173,16 @@ const colorRows = colors
   )
   .join("")
 write(
-  "cores.html",
+  "colors.html",
   page(
-    "cores.html",
-    "Cores",
-    `<article class="prose"><h1>Cores</h1><p class="lead">Neutros com leve viés para o verde da marca e uma cor de marca, <code>primary</code>. Os nomes são os mesmos das CSS variables do shadcn/ui; no Tailwind viram <code>bg-*</code>, <code>text-*</code> e <code>border-*</code>.</p></article>
-<div class="table-wrap"><table class="pui-table tokens-table"><thead><tr><th>Token</th><th>Claro</th><th>Escuro</th></tr></thead><tbody>${colorRows}</tbody></table></div>`
+    "colors.html",
+    "Colors",
+    `<article class="prose"><h1>Colors</h1><p class="lead">Neutrals with a slight lean toward the brand green, and one brand color, <code>primary</code>. In Tailwind each token becomes <code>bg-*</code>, <code>text-*</code> and <code>border-*</code>.</p></article>
+<div class="table-wrap"><table class="pui-table tokens-table"><thead><tr><th>Token</th><th>Light</th><th>Dark</th></tr></thead><tbody>${colorRows}</tbody></table></div>`
   )
 )
 
-// tipografia
+// typography
 const typeRows = tokens.type.groups
   .map(
     (g) =>
@@ -196,15 +197,15 @@ const typeRows = tokens.type.groups
   )
   .join("")
 write(
-  "tipografia.html",
+  "typography.html",
   page(
-    "tipografia.html",
-    "Tipografia",
-    `<article class="prose"><h1>Tipografia</h1><p class="lead">Geist na interface e nos títulos, Geist Mono em código e números alinhados. Base de interface 14px (<code>text-sm</code>).</p></article><div class="type-list">${typeRows}</div>`
+    "typography.html",
+    "Typography",
+    `<article class="prose"><h1>Typography</h1><p class="lead">Geist for the UI and headings, Geist Mono for code and aligned numbers. The UI base is 14px (<code>text-sm</code>).</p></article><div class="type-list">${typeRows}</div>`
   )
 )
 
-// espaçamento
+// spacing
 const bars = tokens.spacing.tokens
   .map((t) => `<div class="space-row"><code class="tok">${t.name}</code><span class="bar" style="width:${t.value}"></span><span class="val">${t.value}</span><span class="usage">${esc(t.usage)}</span></div>`)
   .join("")
@@ -215,23 +216,23 @@ const shadows = tokens.shadow.tokens
   .map((t) => `<div class="demo-tile"><span class="shadow-box" style="box-shadow:var(--${t.name})"></span><code class="tok">${t.name}</code><span class="usage">${esc(t.usage)}</span></div>`)
   .join("")
 write(
-  "espacamento.html",
+  "spacing.html",
   page(
-    "espacamento.html",
-    "Espaçamento, raio e sombra",
-    `<article class="prose"><h1>Espaçamento, raio e sombra</h1><p class="lead">Escala de 4px, raios derivados de <code>--radius</code> como no shadcn e sombras discretas.</p><h2>Espaçamento</h2></article>
-<div class="space-list">${bars}</div><article class="prose"><h2>Raio</h2></article><div class="demo-grid">${radii}</div>
-<article class="prose"><h2>Sombra</h2></article><div class="demo-grid">${shadows}</div>`
+    "spacing.html",
+    "Spacing, radius and shadow",
+    `<article class="prose"><h1>Spacing, radius and shadow</h1><p class="lead">A 4px scale, radii derived from <code>--radius</code> and subtle shadows.</p><h2>Spacing</h2></article>
+<div class="space-list">${bars}</div><article class="prose"><h2>Radius</h2></article><div class="demo-grid">${radii}</div>
+<article class="prose"><h2>Shadow</h2></article><div class="demo-grid">${shadows}</div>`
   )
 )
 
-// componentes
+// components
 for (const c of components) {
-  const p = `componentes/${c.toLowerCase()}.html`
+  const p = `components/${c.toLowerCase()}.html`
   const doc = md(read(`docs/components/${c.toLowerCase()}.md`))
   const code = read(`preview/examples/${c}.js`)
   const body = `<article class="prose">${doc.replace(/(<\/h1>)/, '$1<div class="preview-frame"><div id="preview" class="pui-stage"></div></div>')}
-<details class="code"><summary>Código da prévia</summary><pre><code>${esc(code)}</code></pre></details></article>`
+<details class="code"><summary>Preview source</summary><pre><code>${esc(code)}</code></pre></details></article>`
   write(
     p,
     page(p, c, body, {
@@ -243,7 +244,7 @@ for (const c of components) {
   )
 }
 
-// ------------------------------------------------------------ assets e arquivos para IA
+// ------------------------------------------------------------ assets and files for AI agents
 write("assets/tokens.css", tokensCss)
 cpSync(join(root, "preview/pui.css"), join(out, "assets/pui.css"))
 cpSync(join(root, "preview/pui.js"), join(out, "assets/pui.js"))
@@ -262,21 +263,21 @@ write(
   "llms.txt",
   `# PUI
 
-> Design system sobre shadcn/ui + Tailwind v4. Neutros levemente esverdeados e uma cor de marca (verde-petróleo \`primary\`). Interface em pt-BR.
+> A design system for React + Tailwind v4: tokens, 15 components and rules for AI agents. Slightly green-tinted neutrals and one brand color (deep teal \`primary\`). UI copy in US English.
 
 ## Docs
-- [Toda a documentação]( ${abs("llms-full.txt")} ): guia, regras e componentes em um arquivo
-- [Regras para agentes](${abs("AGENTS.md")}): o que sempre e nunca fazer
-- [Tokens](${abs("tokens.json")}): cores claro/escuro, tipografia, espaçamento, raio, sombra
-- [CSS](${abs("globals.css")}): tokens como CSS variables do shadcn
+- [All documentation](${abs("llms-full.txt")}): guidelines, rules and components in one file
+- [Agent rules](${abs("AGENTS.md")}): what to always and never do
+- [Tokens](${abs("tokens.json")}): light/dark colors, typography, spacing, radius, shadow
+- [CSS](${abs("globals.css")}): tokens as CSS variables
 
-## Registry shadcn
-- [Tema](${abs("r/pui-theme.json")}): \`npx shadcn@latest add ${abs("r/pui-theme.json")}\`
-- [Badge](${abs("r/pui-badge.json")})
+## Install
+- \`npx github:aline-aroucha/pui init\`: theme, cn() helper, AGENTS.md + CLAUDE.md
+- \`npx github:aline-aroucha/pui add <component>\`: components from ${abs("r/")}
 
-## Componentes
-${components.map((c) => `- [${c}](${abs(`componentes/${c.toLowerCase()}.html`)})`).join("\n")}
-`.replace("]( ", "](").replace(" ):", "):")
+## Components
+${components.map((c) => `- [${c}](${abs(`components/${c.toLowerCase()}.html`)}): source ${abs(`r/${c.toLowerCase()}.json`)}`).join("\n")}
+`
 )
 write(
   "llms-full.txt",
@@ -284,8 +285,8 @@ write(
 )
 write(".nojekyll", "")
 if (existsSync(join(root, "public/r"))) cpSync(join(root, "public/r"), join(out, "r"), { recursive: true })
-// o `shadcn build` pula itens sem `files` (como o tema); eles são gravados aqui
+// `shadcn build` skips items without `files` (like the theme); write them here
 for (const item of JSON.parse(read("registry.json")).items.filter((i) => !i.files)) {
   write(`r/${item.name}.json`, JSON.stringify({ $schema: "https://ui.shadcn.com/schema/registry-item.json", ...item }, null, 2) + "\n")
 }
-console.log(`_site/ gerado: ${components.length} componentes${SITE_URL ? ` para ${SITE_URL}` : ""}`)
+console.log(`_site/ built: ${components.length} components${SITE_URL ? ` for ${SITE_URL}` : ""}`)

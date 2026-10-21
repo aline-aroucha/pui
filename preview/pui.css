@@ -1,4 +1,4 @@
-/* PUI — estilos de referência. Valores vêm de tokens.css (mesmos nomes das CSS vars do shadcn). */
+/* PUI preview styles. Values come from tokens.css. */
 body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); font-size: 14px; line-height: 20px; margin: 0; -webkit-font-smoothing: antialiased; }
 .pui-stage { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
 .pui-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }

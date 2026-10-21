@@ -1,9 +1,24 @@
 {
-  "name": "pui",
+  "name": "@aline-aroucha/pui",
   "version": "0.1.0",
-  "private": true,
-  "description": "PUI — design system sobre shadcn/ui",
+  "description": "PUI design system: tokens, components and AI agent rules",
+  "license": "MIT",
   "type": "module",
+  "bin": {
+    "pui": "cli/pui.mjs"
+  },
+  "files": [
+    "cli",
+    "AGENTS.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aline-aroucha/pui.git"
+  },
+  "homepage": "https://aline-aroucha.github.io/pui",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "registry:build": "shadcn build",
     "site:build": "node scripts/build-site.mjs",
@@ -14,6 +29,6 @@
     "marked": "15.0.12",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "shadcn": "3.0.0"
+    "shadcn": "4.21.3"
   }
 }

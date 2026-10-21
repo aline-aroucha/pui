@@ -1,8 +1,12 @@
 # Tabs
 
-Alterna entre vistas do mesmo contexto sem sair da página. É o `Tabs` do shadcn/ui (`TabsList`, `TabsTrigger`, `TabsContent`).
+Switches between views of the same context without leaving the page. Parts: `TabsList`, `TabsTrigger`, `TabsContent`.
 
-## O que você fornece
-- `defaultValue` (ou `value` + `onValueChange`), um `TabsTrigger` e um `TabsContent` por `value`.
-- 2–6 abas, rótulos de uma ou duas palavras.
-- Para navegar entre páginas (URLs), use links de navegação, não Tabs.
+```bash
+npx github:aline-aroucha/pui add tabs
+```
+
+## What you provide
+- `defaultValue` (or `value` + `onValueChange`), one `TabsTrigger` and one `TabsContent` per `value`.
+- Two to six tabs with one- or two-word labels.
+- To move between pages (URLs), use navigation links, not Tabs.

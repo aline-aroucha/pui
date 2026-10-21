@@ -1,7 +1,11 @@
 # Separator
 
-Linha divisória de 1px em `border`. É o `Separator` do shadcn/ui.
+A 1px divider in `border`.
 
-## O que você fornece
-- `orientation`: `horizontal` (padrão) | `vertical`. Margem pelo layout pai (`my-4`, `gap-4`).
-- Prefira espaço (`gap-6`) a linhas. Use Separator quando o espaço sozinho não separa os grupos.
+```bash
+npx github:aline-aroucha/pui add separator
+```
+
+## What you provide
+- `orientation`: `horizontal` (default) | `vertical`. Margins come from the parent layout (`my-4`, `gap-4`).
+- Prefer space (`gap-6`) over lines. Use a Separator when space alone doesn't separate the groups.

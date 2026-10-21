@@ -1,68 +1,58 @@
 # PUI
 
-Design system sobre [shadcn/ui](https://ui.shadcn.com), pronto para ser usado por pessoas e por IAs.
+A design system on top of [shadcn/ui](https://ui.shadcn.com), ready to be used by people and AI agents.
 
-**Documentação:** https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4
+**Documentation:** https://aline-aroucha.github.io/pui
 
-## O que tem aqui
+## What's inside
 
-| Arquivo | Para quê |
+| File | Purpose |
 | --- | --- |
-| `tokens/tokens.json` | Fonte da verdade: cores (claro/escuro), tipografia, espaçamento, raio, sombra. |
-| `src/styles/globals.css` | Os tokens como CSS variables do shadcn + `@theme` do Tailwind v4. |
-| `components.json` | Configuração do shadcn CLI (estilo new-york, ícones lucide). |
-| `registry.json` + `registry/` | Registry shadcn: instala o tema e o Badge PUI em qualquer projeto. |
-| `AGENTS.md` / `CLAUDE.md` | Regras que Claude Code, Codex e outros agentes leem automaticamente. |
-| `.cursor/rules/pui.mdc`, `.github/copilot-instructions.md` | As mesmas regras para Cursor e GitHub Copilot. |
-| `llms.txt` | Índice curto para IAs encontrarem a documentação. |
-| `docs/` | Guia e uma página por componente, em Markdown. |
+| `tokens/tokens.json` | Source of truth: colors (light/dark), typography, spacing, radius, shadow. |
+| `src/styles/globals.css` | The tokens as shadcn CSS variables + the Tailwind v4 `@theme`. |
+| `components.json` | shadcn CLI config (new-york style, lucide icons). |
+| `registry.json` + `registry/` | The PUI registry: theme, `cn()` and the source of the 15 components. |
+| `cli/pui.mjs` | The `pui` command: `init`, `add`, `list`. |
+| `AGENTS.md` / `CLAUDE.md` | Rules that Claude Code, Codex and other agents read automatically. |
+| `.cursor/rules/pui.mdc`, `.github/copilot-instructions.md` | The same rules for Cursor and GitHub Copilot. |
+| `llms.txt` | Short index that helps AI tools find the docs. |
+| `docs/` | Guidelines and one page per component, in Markdown. |
+| `preview/`, `site/`, `scripts/build-site.mjs` | The documentation site and its live component previews. |
 
-## Usar num projeto novo
+## Use it in a project
 
-```bash
-npx create-next-app@latest meu-app --tailwind --ts
-cd meu-app
-npx shadcn@latest init
-# copie src/styles/globals.css do PUI (ou instale pelo registry, abaixo)
-npx shadcn@latest add button badge input label card alert tabs table
-cp ../pui/AGENTS.md ../pui/CLAUDE.md .
-```
-
-Fontes (Next.js): `import { Geist, Geist_Mono } from "next/font/google"` e aplique as variáveis `--font-sans` / `--font-mono` no `<html>`.
-
-## Site de documentação (GitHub Pages)
-
-`npm run build` gera o site em `_site/`. Ele é feito a partir dos arquivos de `tokens/`, `docs/` e `preview/`.
-O site tem visão geral, cores, tipografia, espaçamento, uma página por componente com prévia ao vivo e a página "Usar com IA".
-O mesmo build publica `llms.txt`, `llms-full.txt`, `AGENTS.md`, `tokens.json`, `globals.css` e o registry em `/r/`.
-
-Para publicar:
-
-1. Suba este repositório para o GitHub (branch `main`).
-2. No repositório: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Cada push na `main` roda `.github/workflows/pages.yml` e publica em `https://SEU-USUARIO.github.io/pui/`.
-
-Para ver localmente: `npm install && npm run dev`.
-
-## Publicar o registry
+In a React project with Tailwind v4 (Next.js or Vite):
 
 ```bash
-npm install
-npm run registry:build      # gera public/r/pui-theme.json e public/r/pui-badge.json
+npx github:aline-aroucha/pui init                 # theme, cn(), AGENTS.md + CLAUDE.md
+npx github:aline-aroucha/pui add button card input # any of the 15 components
+npx github:aline-aroucha/pui list
 ```
 
-Hospede `public/` (Vercel, GitHub Pages, Netlify). Em qualquer projeto:
+The `pui` CLI (`cli/pui.mjs`, no dependencies) installs from the PUI registry at https://aline-aroucha.github.io/pui/r/ using the shadcn CLI under the hood.
+Fonts (Next.js): `import { Geist, Geist_Mono } from "next/font/google"` and apply the `--font-sans` / `--font-mono` variables on `<html>`.
 
-```bash
-npx shadcn@latest add https://SEU-DOMINIO/r/pui-theme.json
-npx shadcn@latest add https://SEU-DOMINIO/r/pui-badge.json
-```
+To shorten the command to `npx @aline-aroucha/pui`, publish the package once: `npm login && npm publish --access public`.
 
-Com o registry publicado, o **shadcn MCP** (`npx shadcn@latest mcp init`) deixa o Claude, Cursor e VS Code
-buscar e instalar componentes PUI direto do chat.
+## Documentation site (GitHub Pages)
 
-## Mudar um token
+`npm run build` generates the site in `_site/` from `tokens/`, `docs/` and `preview/`: overview, colors, typography, spacing,
+one page per component with a live preview, and a "Use with AI" page. The same build publishes `llms.txt`, `llms-full.txt`,
+`AGENTS.md`, `tokens.json`, `globals.css` and the registry under `/r/`.
 
-1. Edite `tokens/tokens.json`.
-2. Atualize os mesmos valores em `src/styles/globals.css` e `registry.json`.
-3. Atualize a documentação publicada (peça ao Claude: "atualize o PUI com estes tokens").
+1. In the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+2. Every push to `main` runs `.github/workflows/pages.yml` and publishes to https://aline-aroucha.github.io/pui/.
+
+Run it locally: `npm install && npm run dev`.
+
+## Registry
+
+`registry.json` lists the theme, `utils` and the 15 components; their source lives in `registry/pui/`. `npm run build` turns it into
+`/r/<name>.json` on the site, which is what the `pui` CLI installs from. Any shadcn-compatible tool can use it too: add
+`"registries": { "@pui": "https://aline-aroucha.github.io/pui/r/{name}.json" }` to `components.json`, and the shadcn MCP lets AI agents browse and install PUI components from chat.
+
+## Changing a token
+
+1. Edit `tokens/tokens.json`.
+2. Update the same values in `src/styles/globals.css` and `registry.json`.
+3. Push to `main`; the site redeploys.

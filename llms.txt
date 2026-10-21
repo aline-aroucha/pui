@@ -1,15 +1,15 @@
 # PUI
 
-> Design system sobre shadcn/ui + Tailwind v4. Neutros levemente esverdeados e uma cor de marca (verde-petróleo `primary`). Interface em pt-BR.
+> A design system on top of shadcn/ui + Tailwind v4. Slightly green-tinted neutrals and one brand color (deep teal `primary`). UI copy in US English.
 
 ## Docs
-- [Documentação publicada](https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4): tokens, tipografia, componentes com prévia ao vivo
-- [Regras para agentes](AGENTS.md): o que sempre e nunca fazer
-- [Guia completo](docs/guidelines.md)
-- [Tokens](tokens/tokens.json): cores (claro/escuro), tipografia, espaçamento, raio, sombra
-- [CSS](src/styles/globals.css): tokens como CSS variables do shadcn
+- [Documentation site](https://aline-aroucha.github.io/pui): tokens, typography, components with live previews
+- [Agent rules](AGENTS.md): what to always and never do
+- [Full guidelines](docs/guidelines.md)
+- [Tokens](tokens/tokens.json): colors (light/dark), typography, spacing, radius, shadow
+- [CSS](src/styles/globals.css): tokens as shadcn CSS variables
 
-## Componentes
+## Components
 - [Button](docs/components/button.md)
 - [Badge](docs/components/badge.md)
 - [Input](docs/components/input.md)

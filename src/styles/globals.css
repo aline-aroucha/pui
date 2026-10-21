@@ -1,5 +1,5 @@
-/* PUI — tokens do design system. Fonte da verdade: tokens/tokens.json
-   Documentação: https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4 */
+/* PUI design tokens. Source of truth: tokens/tokens.json
+   Docs: https://aline-aroucha.github.io/pui */
 @import "tailwindcss";
 @import "tw-animate-css";
 

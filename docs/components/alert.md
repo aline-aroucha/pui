@@ -1,12 +1,16 @@
 # Alert
 
-Mensagem persistente dentro da página. É o `Alert` do shadcn/ui (`AlertTitle`, `AlertDescription`).
+Persistent message inside the page. Parts: `AlertTitle`, `AlertDescription`.
 
-## O que você fornece
+```bash
+npx github:aline-aroucha/pui add alert
+```
+
+## What you provide
 - `variant`: `default` | `destructive`.
-- Ícone `lucide-react` 16px como primeiro filho (o shadcn posiciona automaticamente).
-- `AlertTitle`: o que aconteceu. `AlertDescription`: o que fazer agora.
+- A 16px `lucide-react` icon as the first child (the Alert positions it).
+- `AlertTitle`: what happened. `AlertDescription`: what to do now.
 
-## Uso
-- Para avisos temporários após uma ação, use `toast` (Sonner), não Alert.
-- Erros: diga o problema e a correção, sem pedir desculpas ("O cartão expirou. Atualize a forma de pagamento.").
+## Usage
+- For short-lived feedback after an action, use a toast, not an Alert.
+- Errors state the problem and the fix, without apologizing ("The card has expired. Update your payment method.").

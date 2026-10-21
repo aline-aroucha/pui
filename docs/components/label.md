@@ -1,8 +1,12 @@
 # Label
 
-Rótulo de um controle de formulário. É o `Label` do shadcn/ui (Radix).
+Label for a form control.
 
-## O que você fornece
-- `htmlFor` apontando para o `id` do controle. Clicar no label foca/alterna o controle.
-- Texto em sentence case, sem dois-pontos: "Nome completo", não "Nome Completo:".
-- Campo opcional: acrescente "(opcional)" em `text-muted-foreground`. Não marque obrigatórios com asterisco.
+```bash
+npx github:aline-aroucha/pui add label
+```
+
+## What you provide
+- `htmlFor` pointing to the control's `id`. Clicking the label focuses or toggles the control.
+- Sentence case, no colon: "Full name", not "Full Name:".
+- Optional fields: add "(optional)" in `text-muted-foreground`. Don't mark required fields with an asterisk.

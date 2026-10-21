@@ -1,5 +1,5 @@
-/* PUI — layout do site de documentação. Cores e medidas só por tokens. */
-/* Cormorant Garamond só em textos grandes (títulos, destaques); o resto da interface em Geist, a sem serifa do PUI */
+/* PUI documentation site layout. Colors and sizes come from tokens only. */
+/* Cormorant Garamond for large text only (headings, highlights); the rest of the UI uses Geist, the PUI sans */
 :root { --font-display: "Cormorant Garamond", Garamond, "Times New Roman", serif; }
 html { background: var(--background); }
 body { font-family: var(--font-sans); font-size: 14px; line-height: 20px; }

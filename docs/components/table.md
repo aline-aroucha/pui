@@ -1,9 +1,13 @@
 # Table
 
-Dados tabulares. É o `Table` do shadcn/ui; para ordenação, filtros e paginação use o padrão `DataTable` (TanStack Table).
+Tabular data. Parts: `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption`. For sorting, filters and pagination, drive it with TanStack Table.
 
-## O que você fornece
-- `TableHeader` com `TableHead` curtos; `TableBody` com linhas; `TableCaption` opcional.
-- Números e valores: alinhados à direita, `font-mono tabular-nums`, formato pt-BR (`R$ 1.280,00`, `21/10/2026`).
-- Status em `Badge`.
-- Estado vazio: uma linha com `colSpan` e uma frase do que vai aparecer e como adicionar o primeiro item.
+```bash
+npx github:aline-aroucha/pui add table badge
+```
+
+## What you provide
+- `TableHeader` with short `TableHead` labels; `TableBody` with rows; optional `TableCaption`.
+- Numbers and amounts: right-aligned, `font-mono tabular-nums`, en-US format (`$1,280.00`, `Oct 21, 2026`).
+- Status as a `Badge`.
+- Empty state: one row with `colSpan` and a sentence saying what will appear and how to add the first item.

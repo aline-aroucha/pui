@@ -1,7 +1,11 @@
 # Textarea
 
-Campo de texto de várias linhas. É o `Textarea` do shadcn/ui; mesmas regras do `Input`.
+Multi-line text field. The `Input` rules apply.
 
-## O que você fornece
-- `Label` associado, `placeholder` com exemplo real, `rows` opcional.
-- Se houver limite de caracteres, mostre o contador abaixo em `text-muted-foreground`.
+```bash
+npx github:aline-aroucha/pui add textarea
+```
+
+## What you provide
+- A linked `Label`, a `placeholder` with a real example, optional `rows`.
+- If there is a character limit, show the counter below in `text-muted-foreground`.

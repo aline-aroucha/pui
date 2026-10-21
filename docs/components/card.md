@@ -1,13 +1,17 @@
 # Card
 
-Agrupa conteúdo relacionado numa superfície elevada. É o `Card` do shadcn/ui com as partes `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`, `CardContent` e `CardFooter`.
+Groups related content on a raised surface. Parts: `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`, `CardContent` and `CardFooter`.
 
-## O que você fornece
-- `CardTitle` curto (estilo `card-title`), `CardDescription` opcional em uma frase.
-- Conteúdo em `CardContent`; ações em `CardFooter`, primária à direita.
+```bash
+npx github:aline-aroucha/pui add card
+```
 
-## Regras
-- Padding vem do componente (24px = `space-6`). Não adicione `p-*` no Card.
-- Não aninhe Card dentro de Card. Dentro de um card, separe blocos com `Separator` ou `gap-6`.
-- Grades de cards: `grid gap-4 md:grid-cols-2 lg:grid-cols-3`.
-- Não use borda colorida lateral para destacar um card; use `Badge` no header.
+## What you provide
+- A short `CardTitle` (`card-title` style) and an optional one-sentence `CardDescription`.
+- Content in `CardContent`; actions in `CardFooter`, primary on the right.
+
+## Rules
+- Padding comes from the component (24px = `space-6`). Don't add `p-*` to the Card.
+- Don't nest a Card inside a Card. Inside a card, split blocks with `Separator` or `gap-6`.
+- Card grids: `grid gap-4 md:grid-cols-2 lg:grid-cols-3`.
+- Don't highlight a card with a colored side border; use a `Badge` in the header.

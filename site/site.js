@@ -1,8 +1,8 @@
-// PUI — tema claro/escuro, menu no celular e botões de copiar.
+// PUI docs: light/dark theme, mobile menu and copy buttons.
 (function () {
   var html = document.documentElement
   var themeBtn = document.getElementById("theme-toggle")
-  function label() { themeBtn.textContent = html.classList.contains("dark") ? "Tema claro" : "Tema escuro" }
+  function label() { themeBtn.textContent = html.classList.contains("dark") ? "Light theme" : "Dark theme" }
   label()
   themeBtn.addEventListener("click", function () {
     var dark = html.classList.toggle("dark")
@@ -20,8 +20,8 @@
   document.querySelectorAll("[data-copy]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(function () {
-        btn.textContent = "Copiado"
-        setTimeout(function () { btn.textContent = "Copiar" }, 1500)
+        btn.textContent = "Copied"
+        setTimeout(function () { btn.textContent = "Copy" }, 1500)
       })
     })
   })

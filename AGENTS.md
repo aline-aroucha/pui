@@ -1,48 +1,48 @@
-# PUI — regras para agentes de IA
+# PUI — rules for AI agents
 
-Este projeto usa o **PUI**, um design system sobre shadcn/ui + Tailwind v4.
-Documentação completa (tokens, componentes, prévias): https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4
-Cópia local: `docs/guidelines.md`, `docs/components/*.md`, `tokens/tokens.json`.
+This project uses **PUI**, a design system on top of shadcn/ui + Tailwind v4.
+Full documentation (tokens, components, live previews): https://aline-aroucha.github.io/pui
+Local copy: `docs/guidelines.md`, `docs/components/*.md`, `tokens/tokens.json`.
 
-## Sempre
+## Always
 
-- Use componentes de `@/components/ui/*`. Se faltar, rode `npx shadcn@latest add <componente>`. Não recrie componentes que o shadcn já tem.
-- Cores **somente** por classes semânticas: `bg-background`, `text-foreground`, `bg-card`, `bg-primary text-primary-foreground`,
+- Use components from `@/components/ui/*`. If one is missing, run `npx github:aline-aroucha/pui add <component>`. Don't rebuild components PUI already has.
+- Color **only** through semantic classes: `bg-background`, `text-foreground`, `bg-card`, `bg-primary text-primary-foreground`,
   `bg-secondary`, `bg-muted text-muted-foreground`, `bg-accent text-accent-foreground`, `bg-destructive text-destructive-foreground`,
   `bg-success text-success-foreground`, `bg-warning text-warning-foreground`, `border-border`, `border-input`, `ring-ring`,
   `fill-chart-1`…`fill-chart-5`.
-- Todo fundo colorido usa o seu par `*-foreground` para o texto.
-- Espaçamento na escala 4px: `gap-1 gap-2 gap-3 gap-4 gap-6 gap-8`, `p-4 p-6`, `py-12`.
-- Raios: `rounded-md` (controles), `rounded-lg` (alert, popover, dialog), `rounded-xl` (card), `rounded-full` (avatar, switch).
-- Texto de interface: `text-sm`. Títulos: `text-4xl/3xl/2xl/xl font-semibold tracking-tight` (h1 é `font-extrabold`).
-- Números em tabela: `text-right font-mono tabular-nums`. Formato pt-BR: `R$ 1.280,00`, `21/10/2026`.
-- Ícones: `lucide-react`, `size-4` em botões e campos.
-- Interface em português do Brasil, sentence case, verbos claros nos botões ("Salvar alterações").
-- Acessibilidade: `Label` em todo campo, `aria-label` em botão só com ícone, status com ícone ou palavra além da cor.
+- Every colored background uses its `*-foreground` pair for text.
+- Spacing on the 4px scale: `gap-1 gap-2 gap-3 gap-4 gap-6 gap-8`, `p-4 p-6`, `py-12`.
+- Radii: `rounded-md` (controls), `rounded-lg` (alert, popover, dialog), `rounded-xl` (card), `rounded-full` (avatar, switch).
+- UI text: `text-sm`. Headings: `text-4xl/3xl/2xl/xl font-semibold tracking-tight` (h1 is `font-extrabold`).
+- Numbers in tables: `text-right font-mono tabular-nums`. en-US format: `$1,280.00`, `Oct 21, 2026`.
+- Icons: `lucide-react`, `size-4` in buttons and fields.
+- UI copy in US English, sentence case, clear verbs on buttons ("Save changes").
+- Accessibility: a `Label` on every field, `aria-label` on icon-only buttons, status shown with an icon or word besides color.
 
-## Nunca
+## Never
 
-- Hex, `rgb()`, `hsl()` ou cores da paleta Tailwind (`bg-teal-600`, `text-gray-500`, `bg-white`, `text-black`) em componentes.
-- `dark:` para trocar cores: os tokens já mudam com a classe `.dark`.
-- Valores arbitrários de espaçamento ou raio (`p-[13px]`, `rounded-[10px]`).
-- Mais de um `Button` `variant="default"` na mesma área.
-- Card dentro de Card; borda colorida lateral para destacar card; emoji na interface; gradientes.
+- Hex, `rgb()`, `hsl()` or Tailwind palette colors (`bg-teal-600`, `text-gray-500`, `bg-white`, `text-black`) in components.
+- `dark:` to switch colors: the tokens already change with the `.dark` class.
+- Arbitrary spacing or radius values (`p-[13px]`, `rounded-[10px]`).
+- More than one `Button` with `variant="default"` in the same area.
+- A Card inside a Card; a colored side border to highlight a card; emoji in the UI; gradients.
 
-## Variantes por intenção
+## Variants by intent
 
-| Intenção | Componente |
+| Intent | Component |
 | --- | --- |
-| Ação principal | `<Button>` |
-| Ação de apoio | `<Button variant="secondary">` ou `"outline"` |
-| Cancelar / baixa ênfase | `<Button variant="ghost">` |
-| Ação irreversível | `<Button variant="destructive">` dentro de `AlertDialog` |
-| Status ok / pendente / erro | `<Badge variant="success" \| "warning" \| "destructive">` |
-| Mensagem persistente | `<Alert>` |
-| Aviso após uma ação | `toast()` do Sonner |
-| Configuração com efeito imediato | `<Switch>` |
-| Opção salva com o formulário | `<Checkbox>` |
+| Main action | `<Button>` |
+| Supporting action | `<Button variant="secondary">` or `"outline"` |
+| Cancel / low emphasis | `<Button variant="ghost">` |
+| Irreversible action | `<Button variant="destructive">` inside an `AlertDialog` |
+| Status ok / pending / error | `<Badge variant="success" \| "warning" \| "destructive">` |
+| Persistent message | `<Alert>` |
+| Feedback after an action | `toast()` (Sonner) |
+| Setting with immediate effect | `<Switch>` |
+| Option saved with the form | `<Checkbox>` |
 
-## Ao alterar tokens
+## When changing tokens
 
-`tokens/tokens.json` é a fonte. Atualize `src/styles/globals.css` e `registry.json` com os mesmos valores
-e publique a documentação de novo. Mantenha contraste ≥ 4,5:1 para texto e ≥ 3:1 para bordas de campo e foco, nos dois temas.
+`tokens/tokens.json` is the source of truth. Update `src/styles/globals.css` and `registry.json` with the same values
+and publish the documentation again. Keep contrast ≥ 4.5:1 for text and ≥ 3:1 for field borders and focus, in both themes.

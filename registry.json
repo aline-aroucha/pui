@@ -1,15 +1,42 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "pui",
-  "homepage": "https://claude.ai/artifact/MkHJF4pwEJxxjxRcEByNy4",
+  "homepage": "https://aline-aroucha.github.io/pui",
   "items": [
     {
-      "name": "pui-theme",
-      "type": "registry:theme",
-      "title": "PUI theme",
-      "description": "Tokens PUI (cores claro/escuro, raio, fontes) como CSS variables do shadcn/ui.",
+      "name": "style",
+      "type": "registry:style",
+      "extends": "none",
+      "title": "PUI",
+      "description": "The PUI base: tokens (light and dark colors, radius, fonts), base styles and the cn() helper.",
+      "dependencies": [
+        "tw-animate-css",
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "css": {
+        "@import \"tw-animate-css\"": {},
+        "@custom-variant dark (&:is(.dark *))": {},
+        "@layer base": {
+          "*": {
+            "@apply border-border outline-ring/50": {}
+          },
+          "body": {
+            "@apply bg-background text-foreground font-sans antialiased": {}
+          }
+        }
+      },
       "cssVars": {
         "theme": {
+          "radius-sm": "calc(var(--radius) - 4px)",
+          "radius-md": "calc(var(--radius) - 2px)",
+          "radius-lg": "var(--radius)",
+          "radius-xl": "calc(var(--radius) + 4px)",
           "font-sans": "\"Geist\", ui-sans-serif, system-ui, sans-serif",
           "font-mono": "\"Geist Mono\", ui-monospace, SFMono-Regular, Menlo, monospace",
           "color-success": "var(--success)",
@@ -22,9 +49,9 @@
           "background": "#ffffff",
           "foreground": "#0d1615",
           "card": "#ffffff",
-          "card-foreground": "var(--foreground)",
+          "card-foreground": "#0d1615",
           "popover": "#ffffff",
-          "popover-foreground": "var(--foreground)",
+          "popover-foreground": "#0d1615",
           "primary": "#0b6b60",
           "primary-foreground": "#f3fbf9",
           "secondary": "#f0f4f3",
@@ -41,29 +68,29 @@
           "warning-foreground": "#ffffff",
           "border": "#dce4e2",
           "input": "#82928e",
-          "ring": "var(--primary)",
+          "ring": "#0b6b60",
           "chart-1": "#0b6b60",
           "chart-2": "#2f74b5",
           "chart-3": "#c9821f",
           "chart-4": "#7a52b3",
           "chart-5": "#5b6b68",
           "sidebar": "#f7f9f9",
-          "sidebar-foreground": "var(--foreground)",
-          "sidebar-primary": "var(--primary)",
-          "sidebar-primary-foreground": "var(--primary-foreground)",
-          "sidebar-accent": "var(--accent)",
-          "sidebar-accent-foreground": "var(--accent-foreground)",
-          "sidebar-border": "var(--border)",
-          "sidebar-ring": "var(--ring)",
+          "sidebar-foreground": "#0d1615",
+          "sidebar-primary": "#0b6b60",
+          "sidebar-primary-foreground": "#f3fbf9",
+          "sidebar-accent": "#e3f1ee",
+          "sidebar-accent-foreground": "#0e3c36",
+          "sidebar-border": "#dce4e2",
+          "sidebar-ring": "#0b6b60",
           "radius": "0.5rem"
         },
         "dark": {
           "background": "#0a1110",
           "foreground": "#e6eeec",
           "card": "#101918",
-          "card-foreground": "var(--foreground)",
+          "card-foreground": "#e6eeec",
           "popover": "#101918",
-          "popover-foreground": "var(--foreground)",
+          "popover-foreground": "#e6eeec",
           "primary": "#45c4b0",
           "primary-foreground": "#032019",
           "secondary": "#1a2624",
@@ -80,36 +107,302 @@
           "warning-foreground": "#2a1600",
           "border": "#24332f",
           "input": "#56706b",
-          "ring": "var(--primary)",
+          "ring": "#45c4b0",
           "chart-1": "#45c4b0",
           "chart-2": "#6aa9e6",
           "chart-3": "#f0b257",
           "chart-4": "#b08ae0",
           "chart-5": "#a3b3af",
           "sidebar": "#0d1514",
-          "sidebar-foreground": "var(--foreground)",
-          "sidebar-primary": "var(--primary)",
-          "sidebar-primary-foreground": "var(--primary-foreground)",
-          "sidebar-accent": "var(--accent)",
-          "sidebar-accent-foreground": "var(--accent-foreground)",
-          "sidebar-border": "var(--border)",
-          "sidebar-ring": "var(--ring)"
+          "sidebar-foreground": "#e6eeec",
+          "sidebar-primary": "#45c4b0",
+          "sidebar-primary-foreground": "#032019",
+          "sidebar-accent": "#16302c",
+          "sidebar-accent-foreground": "#c3ebe3",
+          "sidebar-border": "#24332f",
+          "sidebar-ring": "#45c4b0"
         }
       }
     },
     {
-      "name": "pui-badge",
-      "type": "registry:ui",
-      "title": "Badge (PUI)",
-      "description": "Badge do shadcn/ui com as variantes success e warning.",
-      "registryDependencies": [
-        "badge"
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "cn()",
+      "description": "Class name helper used by every PUI component.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
       ],
       "files": [
         {
-          "path": "registry/pui/badge.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/badge.tsx"
+          "path": "registry/pui/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "PUI Alert. Docs: https://aline-aroucha.github.io/pui/components/alert.html",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "PUI Avatar. Docs: https://aline-aroucha.github.io/pui/components/avatar.html",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "PUI Badge. Docs: https://aline-aroucha.github.io/pui/components/badge.html",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "PUI Button. Docs: https://aline-aroucha.github.io/pui/components/button.html",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "PUI Card. Docs: https://aline-aroucha.github.io/pui/components/card.html",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "PUI Checkbox. Docs: https://aline-aroucha.github.io/pui/components/checkbox.html",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "PUI Input. Docs: https://aline-aroucha.github.io/pui/components/input.html",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "PUI Label. Docs: https://aline-aroucha.github.io/pui/components/label.html",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "PUI Select. Docs: https://aline-aroucha.github.io/pui/components/select.html",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "PUI Separator. Docs: https://aline-aroucha.github.io/pui/components/separator.html",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "PUI Skeleton. Docs: https://aline-aroucha.github.io/pui/components/skeleton.html",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "PUI Switch. Docs: https://aline-aroucha.github.io/pui/components/switch.html",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "PUI Table. Docs: https://aline-aroucha.github.io/pui/components/table.html",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "PUI Tabs. Docs: https://aline-aroucha.github.io/pui/components/tabs.html",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "PUI Textarea. Docs: https://aline-aroucha.github.io/pui/components/textarea.html",
+      "dependencies": [],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/textarea.tsx",
+          "type": "registry:ui"
         }
       ]
     }

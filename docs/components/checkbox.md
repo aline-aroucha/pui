@@ -1,8 +1,12 @@
 # Checkbox
 
-Liga/desliga uma opção que só vale depois de salvar o formulário. É o `Checkbox` do shadcn/ui (Radix).
+Turns an option on or off; it takes effect when the form is saved.
 
-## O que você fornece
-- `id` + `Label htmlFor`; `checked` / `onCheckedChange` (controlado) ou `defaultChecked`.
-- Para efeito imediato (sem botão Salvar), use `Switch`.
-- Lista de checkboxes: `grid gap-3`; label à direita do controle com `gap-2`.
+```bash
+npx github:aline-aroucha/pui add checkbox
+```
+
+## What you provide
+- `id` + `Label htmlFor`; `checked` / `onCheckedChange` (controlled) or `defaultChecked`.
+- For an immediate effect (no Save button), use `Switch`.
+- Checkbox lists: `grid gap-3`; label to the right of the control with `gap-2`.

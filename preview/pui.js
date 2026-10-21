@@ -1,6 +1,6 @@
 /* @ds-bundle: {"format":4,"namespace":"PUI","components":[{"name":"Button"},{"name":"Badge"},{"name":"Input"},{"name":"Textarea"},{"name":"Label"},{"name":"Select"},{"name":"Checkbox"},{"name":"Switch"},{"name":"Card"},{"name":"Alert"},{"name":"Tabs"},{"name":"Table"},{"name":"Separator"},{"name":"Skeleton"},{"name":"Avatar"}]} */
-/* PUI: implementação de referência dos componentes shadcn/ui, só para as prévias da documentação.
-   Em produto, use os componentes do shadcn (components/ui) com os tokens de globals.css. */
+/* PUI: lightweight reference implementation used only by the documentation previews.
+   In products, install the real components with `npx github:aline-aroucha/pui add <name>`. */
 (function () {
   var React = window.React, h = React.createElement;
   function cx() { return Array.prototype.filter.call(arguments, Boolean).join(' '); }

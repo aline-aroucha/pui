@@ -1,6 +1,6 @@
 var P = window.PUI, h = React.createElement;
-  ReactDOM.createRoot(document.getElementById('preview')).render(h(P.Tabs, { defaultValue: 'geral' },
-    h(P.TabsList, null, h(P.TabsTrigger, { value: 'geral' }, 'Geral'), h(P.TabsTrigger, { value: 'equipe' }, 'Equipe'), h(P.TabsTrigger, { value: 'cobranca' }, 'Cobrança')),
-    h(P.TabsContent, { value: 'geral' }, 'Nome, logo e fuso horário da empresa.'),
-    h(P.TabsContent, { value: 'equipe' }, '8 membros, 2 convites pendentes.'),
-    h(P.TabsContent, { value: 'cobranca' }, 'Próxima fatura em 01/11/2026.')));
+  ReactDOM.createRoot(document.getElementById('preview')).render(h(P.Tabs, { defaultValue: 'general' },
+    h(P.TabsList, null, h(P.TabsTrigger, { value: 'general' }, 'General'), h(P.TabsTrigger, { value: 'team' }, 'Team'), h(P.TabsTrigger, { value: 'billing' }, 'Billing')),
+    h(P.TabsContent, { value: 'general' }, 'Company name, logo and time zone.'),
+    h(P.TabsContent, { value: 'team' }, '8 members, 2 pending invites.'),
+    h(P.TabsContent, { value: 'billing' }, 'Next invoice on Nov 1, 2026.')));

@@ -1,8 +1,13 @@
 # Select
 
-Escolha de uma opção numa lista. No produto use o `Select` do shadcn/ui (Radix); a prévia usa um `<select>` nativo com o mesmo visual.
+Pick one option from a list. It opens a styled, keyboard-accessible list; the preview above shows its closed state.
 
-## O que você fornece
-- `Label` associado; opções com rótulos curtos, em ordem lógica (alfabética, ou por frequência).
-- Até ~15 opções. Acima disso, use `Combobox` (Popover + Command) com busca.
-- 2–4 opções sempre visíveis: prefira `RadioGroup` ou `Tabs`.
+```bash
+npx github:aline-aroucha/pui add select
+```
+
+## What you provide
+- `Select` > `SelectTrigger` (`SelectValue` inside) + `SelectContent` with one `SelectItem` per option. `size`: `sm` | `default`.
+- A linked `Label`; options with short labels in a logical order (alphabetical, or by frequency).
+- Up to ~15 options. Beyond that, use a `Combobox` (Popover + Command) with search.
+- Two to four options that should stay visible: prefer `RadioGroup` or `Tabs`.
