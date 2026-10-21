@@ -30,6 +30,20 @@ cp ../pui/AGENTS.md ../pui/CLAUDE.md .
 
 Fontes (Next.js): `import { Geist, Geist_Mono } from "next/font/google"` e aplique as variáveis `--font-sans` / `--font-mono` no `<html>`.
 
+## Site de documentação (GitHub Pages)
+
+`npm run build` gera o site em `_site/`. Ele é feito a partir dos arquivos de `tokens/`, `docs/` e `preview/`.
+O site tem visão geral, cores, tipografia, espaçamento, uma página por componente com prévia ao vivo e a página "Usar com IA".
+O mesmo build publica `llms.txt`, `llms-full.txt`, `AGENTS.md`, `tokens.json`, `globals.css` e o registry em `/r/`.
+
+Para publicar:
+
+1. Suba este repositório para o GitHub (branch `main`).
+2. No repositório: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. Cada push na `main` roda `.github/workflows/pages.yml` e publica em `https://SEU-USUARIO.github.io/pui/`.
+
+Para ver localmente: `npm install && npm run dev`.
+
 ## Publicar o registry
 
 ```bash

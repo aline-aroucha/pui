@@ -1,0 +1,15 @@
+var P = window.PUI, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('preview')).render(h('div', null,
+    h('div', { className: 'pui-row' },
+      h(P.Button, null, 'Salvar alterações'),
+      h(P.Button, { variant: 'secondary' }, 'Duplicar'),
+      h(P.Button, { variant: 'outline' }, 'Exportar CSV'),
+      h(P.Button, { variant: 'ghost' }, 'Cancelar'),
+      h(P.Button, { variant: 'destructive' }, 'Excluir projeto'),
+      h(P.Button, { variant: 'link' }, 'Ver histórico')),
+    h('div', { className: 'pui-row', style: { marginTop: 12 } },
+      h(P.Button, { size: 'sm' }, 'Pequeno'),
+      h(P.Button, { size: 'lg' }, 'Grande'),
+      h(P.Button, { size: 'icon', variant: 'outline', 'aria-label': 'Adicionar' },
+        h('svg', { viewBox: '0 0 24 24' }, h('path', { d: 'M12 5v14M5 12h14' }))),
+      h(P.Button, { disabled: true }, 'Desabilitado'))));

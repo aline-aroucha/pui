@@ -2,11 +2,18 @@
   "name": "pui",
   "version": "0.1.0",
   "private": true,
-  "description": "PUI \u2014 design system sobre shadcn/ui",
+  "description": "PUI — design system sobre shadcn/ui",
+  "type": "module",
   "scripts": {
-    "registry:build": "shadcn build"
+    "registry:build": "shadcn build",
+    "site:build": "node scripts/build-site.mjs",
+    "build": "npm run registry:build && npm run site:build",
+    "dev": "npm run build && npx serve _site"
   },
   "devDependencies": {
-    "shadcn": "^3.0.0"
+    "marked": "15.0.12",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "shadcn": "3.0.0"
   }
 }
