@@ -66,7 +66,7 @@ function page(path, title, body, { scripts = "" } = {}) {
 <meta name="description" content="PUI: design system sobre shadcn/ui, com tokens, componentes e regras para agentes de IA.">
 <link rel="alternate" type="text/plain" title="llms.txt" href="${base}llms.txt">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;800&family=Geist+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Geist:wght@400;500;600;800&family=Geist+Mono:wght@400;600&display=swap">
 <script>try{var t=localStorage.getItem("pui-theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}</script>
 <link rel="stylesheet" href="${base}assets/tokens.css">
 <link rel="stylesheet" href="${base}assets/pui.css">
