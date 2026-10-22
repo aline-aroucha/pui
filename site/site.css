@@ -71,6 +71,11 @@ svg { flex-shrink: 0; }
 .nav-section a[aria-current="page"] { background: var(--panel); color: var(--foreground); font-weight: 600; box-shadow: var(--shadow-sm); }
 
 .panel { background: var(--panel); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); padding: 40px; min-width: 0; outline: none; }
+/* On larger screens the panel scrolls inside itself, so its rounded corners stay in view under the header */
+@media (min-width: 861px) {
+  body { height: 100vh; overflow: hidden; }
+  .panel { height: calc(100vh - 72px); box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain; scroll-padding-top: 24px; }
+}
 .panel-grid { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 40px; align-items: start; }
 .article { max-width: 768px; width: 100%; margin: 0 auto; min-width: 0; font-size: 16px; line-height: 26px; }
 
@@ -87,8 +92,8 @@ svg { flex-shrink: 0; }
 
 /* ---------- content */
 .article > section { margin-top: 48px; }
-.article h2 { font: 700 28px/34px var(--font-display); letter-spacing: -0.01em; margin: 0 0 16px; color: var(--foreground); scroll-margin-top: 72px; text-wrap: balance; }
-.article h3 { font: 600 18px/26px var(--font-sans); margin: 32px 0 8px; scroll-margin-top: 72px; }
+.article h2 { font: 700 28px/34px var(--font-display); letter-spacing: -0.01em; margin: 0 0 16px; color: var(--foreground); scroll-margin-top: 24px; text-wrap: balance; }
+.article h3 { font: 600 18px/26px var(--font-sans); margin: 32px 0 8px; scroll-margin-top: 24px; }
 .article p, .article ul, .article ol { margin: 0 0 16px; }
 .article li + li { margin-top: 6px; }
 .article :not(pre) > code { background: var(--muted); padding: 2px 6px; border-radius: var(--radius-sm); font-weight: 600; font-size: 13px; }
@@ -136,7 +141,7 @@ details.code summary { cursor: pointer; color: var(--muted-foreground); font-siz
 .required { margin-left: 8px; font-size: 12px; font-weight: 500; color: var(--warning); }
 
 /* ---------- "On this page" */
-.toc { position: sticky; top: 100px; font-size: 14px; line-height: 20px; }
+.toc { position: sticky; top: 0; font-size: 14px; line-height: 20px; }
 .toc-title { font: 600 13px/16px var(--font-sans); color: var(--muted-foreground); margin: 0 0 8px; }
 .toc ul { list-style: none; margin: 0 0 24px; padding: 0; border-left: 1px solid var(--border); }
 .toc a { display: block; padding: 4px 12px; margin-left: -1px; border-left: 2px solid transparent; color: var(--muted-foreground); text-decoration: none; }
