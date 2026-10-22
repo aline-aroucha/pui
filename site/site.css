@@ -1,9 +1,9 @@
 /* PUI documentation site. Layout: header row, collapsible side navigation, raised content panel with an
    "On this page" column. Colors and sizes come from tokens only. */
-/* Helvetica Now for large text only (page titles, section headings, page descriptions); the rest of the UI uses Geist.
-   Helvetica Now is a licensed Monotype face: it shows where installed, otherwise Helvetica Neue / Helvetica, then Arial. */
+/* Inter Tight (Google Fonts), the closest free match to Helvetica Now Display, for large text only
+   (page titles, section headings, page descriptions); the rest of the UI uses Geist. */
 :root {
-  --font-display: "Helvetica Now Display", "Helvetica Now Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --frame: var(--muted);
   --panel: var(--background);
 }
@@ -76,8 +76,8 @@ svg { flex-shrink: 0; }
 
 /* ---------- page head */
 .page-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
-.page-head h1 { margin: 0; font: 700 52px/1.05 var(--font-display); letter-spacing: -0.03em; color: var(--foreground); text-wrap: balance; }
-.page-description { font: 400 20px/28px var(--font-display); letter-spacing: -0.01em; color: var(--muted-foreground); margin: 12px 0 0; max-width: 640px; }
+.page-head h1 { margin: 0; font: 700 52px/1.05 var(--font-display); letter-spacing: -0.02em; color: var(--foreground); text-wrap: balance; }
+.page-description { font: 400 20px/28px var(--font-display); color: var(--muted-foreground); margin: 12px 0 0; max-width: 640px; }
 .llm-menu { position: relative; display: flex; align-items: center; gap: 2px; flex-shrink: 0; margin-top: 8px; }
 .llm-options { position: absolute; right: 0; top: 40px; z-index: 10; list-style: none; margin: 0; padding: 6px; min-width: 200px;
   background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
@@ -87,7 +87,7 @@ svg { flex-shrink: 0; }
 
 /* ---------- content */
 .article > section { margin-top: 48px; }
-.article h2 { font: 700 28px/34px var(--font-display); letter-spacing: -0.02em; margin: 0 0 16px; color: var(--foreground); scroll-margin-top: 72px; text-wrap: balance; }
+.article h2 { font: 700 28px/34px var(--font-display); letter-spacing: -0.01em; margin: 0 0 16px; color: var(--foreground); scroll-margin-top: 72px; text-wrap: balance; }
 .article h3 { font: 600 18px/26px var(--font-sans); margin: 32px 0 8px; scroll-margin-top: 72px; }
 .article p, .article ul, .article ol { margin: 0 0 16px; }
 .article li + li { margin-top: 6px; }
