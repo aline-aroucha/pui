@@ -12,6 +12,7 @@ body { background: var(--background); color: var(--foreground); font-family: var
   border-radius: var(--radius-md); font: 500 14px/20px var(--font-sans); height: 36px; padding: 0 16px; cursor: pointer; transition: background-color .15s, color .15s; }
 .pui-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .pui-btn:disabled { opacity: .5; pointer-events: none; }
+.pui-btn:active { transform: translateY(1px); }
 .pui-btn--default { background: var(--primary); color: var(--primary-foreground); box-shadow: var(--shadow-xs); }
 .pui-btn--default:hover { background: color-mix(in oklab, var(--primary) 90%, var(--background)); }
 .pui-btn--secondary { background: var(--secondary); color: var(--secondary-foreground); box-shadow: var(--shadow-xs); }
@@ -49,12 +50,20 @@ body { background: var(--background); color: var(--foreground); font-family: var
 
 .pui-checkbox { box-sizing: border-box; width: 16px; height: 16px; padding: 0; display: inline-grid; place-items: center; border: 1px solid var(--input);
   border-radius: var(--radius-sm); background: var(--background); color: var(--primary-foreground); cursor: pointer; box-shadow: var(--shadow-xs); }
-.pui-checkbox[data-state="checked"] { background: var(--primary); border-color: var(--primary); }
+.pui-checkbox:hover, .pui-select select:hover { border-color: var(--primary); }
+.pui-checkbox[data-state="checked"], .pui-checkbox[data-state="indeterminate"] { background: var(--primary); border-color: var(--primary); }
 .pui-checkbox svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .pui-checkbox:disabled { opacity: .5; cursor: not-allowed; }
 .pui-switch { box-sizing: border-box; width: 34px; height: 20px; padding: 1px; border: 1px solid var(--input); border-radius: var(--radius-full);
   background: var(--input); cursor: pointer; display: inline-flex; align-items: center; transition: background-color .15s; }
 .pui-switch[data-state="checked"] { background: var(--primary); border-color: var(--primary); }
+.pui-switch:hover { filter: brightness(0.95); }
+.pui-optional { color: var(--muted-foreground); font-weight: 400; }
+.pui-field__description { margin: 0; color: var(--muted-foreground); font-size: 14px; line-height: 20px; }
+.pui-field__error { margin: 0; display: flex; gap: 6px; align-items: flex-start; color: var(--destructive); font-size: 14px; line-height: 20px; }
+.pui-field__error svg { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.pui-password { display: flex; gap: 8px; align-items: center; }
+.pui-password .pui-input { flex: 1; min-width: 0; }
 .pui-switch__thumb { width: 16px; height: 16px; border-radius: var(--radius-full); background: var(--background); transition: transform .15s; }
 .pui-switch[data-state="checked"] .pui-switch__thumb { transform: translateX(14px); background: var(--primary-foreground); }
 .pui-switch:disabled { opacity: .5; cursor: not-allowed; }

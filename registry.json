@@ -251,6 +251,25 @@
       ]
     },
     {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "PUI Field. Docs: https://aline-aroucha.github.io/pui/components/field.html",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json",
+        "https://aline-aroucha.github.io/pui/r/label.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
@@ -280,6 +299,26 @@
       "files": [
         {
           "path": "registry/pui/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password input",
+      "description": "PUI Password-input. Docs: https://aline-aroucha.github.io/pui/components/password-input.html",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://aline-aroucha.github.io/pui/r/utils.json",
+        "https://aline-aroucha.github.io/pui/r/input.json",
+        "https://aline-aroucha.github.io/pui/r/button.json"
+      ],
+      "files": [
+        {
+          "path": "registry/pui/ui/password-input.tsx",
           "type": "registry:ui"
         }
       ]

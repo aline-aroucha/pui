@@ -41,6 +41,21 @@ Local copy: `docs/guidelines.md`, `docs/components/*.md`, `tokens/tokens.json`.
 | Feedback after an action | `toast()` (Sonner) |
 | Setting with immediate effect | `<Switch>` |
 | Option saved with the form | `<Checkbox>` |
+| Any form field (label, help, error) | `<Field>` + `FieldLabel`, `FieldControl`, `FieldDescription`, `FieldError` |
+| Password | `<PasswordInput>` inside a `Field` |
+
+## Behavior and accessibility (Magoo)
+
+Behavior follows Magoo 1.6.0 (https://magoo.cc/en), by Marcelo Sales. Before building or changing any component, read its "Accessibility"
+section in `docs/components/` and its Magoo page, or ask the Magoo MCP ("Use the Magoo MCP to check the Modal component's keyboard behavior").
+For components PUI doesn't ship yet (modal, toasts, menu, tooltip, radio button, slider, pagination…), build them to their Magoo page.
+
+- Visible hover, pressed and focus states; status never by color alone.
+- `Enter` / `Space` act like native controls; arrows inside composite widgets (tabs, menus, listboxes); `Esc` closes overlays; predictable focus after closing.
+- Name, role and state for every control. `role="alert"` only for critical messages, `role="status"` otherwise; never announce on every keystroke.
+- Wrap every form control in `Field`: visible label, `aria-describedby` for help and errors, `aria-invalid` only after validation, values kept after an invalid submit, concrete error text.
+- Don't disable a submit button as the only way to signal errors. Disabled buttons don't take focus.
+- Respect `prefers-reduced-motion`; a loader always ends in content, an error with "Try again", or an empty state.
 
 ## When changing tokens
 

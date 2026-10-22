@@ -15,7 +15,32 @@ Read this section before generating any PUI interface.
 7. **One primary action per area.** The others are `secondary`, `outline` or `ghost`.
 8. **UI copy in US English**, sentence case, en-US formats (`$1,280.00`, `Oct 21, 2026`, `9:42 AM`).
 9. **Accessibility:** every control has a `Label`; icon-only buttons have an `aria-label`; status is never conveyed by color alone (add an icon or a word).
-10. **Icons:** `lucide-react`, 16px (`size-4`) in controls and 20px in headings, default `stroke-width`.
+10. **Icons:** `lucide-react`, 16px (`size-4`) in controls and 20px in headings, default `stroke-width`. Decorative icons get `aria-hidden="true"`.
+11. **Behavior follows [Magoo](https://magoo.cc/en).** Before building or changing a component, read its Magoo page (or ask the Magoo MCP) and meet its keyboard, screen reader, touch and acceptance criteria.
+
+## Behavior and accessibility
+
+PUI defines how things look; how they behave follows **[Magoo](https://magoo.cc/en)** 1.6.0, the interaction-behavior library by Marcelo Sales (MIT). Every component page has an **Accessibility** section adapted from its Magoo entry, with the Magoo IDs it is based on.
+
+- **Every interactive state is visible:** hover, pressed, keyboard focus (solid 2px ring), selected, disabled, invalid. None depends on color alone.
+- **Keyboard:** `Tab` / `Shift+Tab` follow the visual order; `Enter` and `Space` act like the native element; `Esc` closes overlays; focus is never trapped outside dialogs and always lands somewhere predictable after an element closes.
+- **Screen readers** hear a name, a role and a state for every control. Messages are announced by urgency: `role="alert"` only for critical ones, `role="status"` for the rest, never on every keystroke.
+- **Forms:** persistent labels, instructions and errors tied to the field (`Field`), values kept after an invalid submit, concrete error text.
+- **Touch:** labels are part of the target; controls keep comfortable touch areas, also with zoom.
+- **Motion:** animations stop when the person prefers reduced motion; a loader never replaces the final message.
+- Components PUI doesn't ship yet (Modal, Dialogs, Toasts, Accordion, Menu, Tooltip, Radio button, Slider, Autocomplete, Dates, File upload, Breadcrumb, Pagination, Step indicator, Carousel, Drag and drop, Links, Lists, Headings, Page regions, Tabbar) still follow their Magoo page when you build them.
+
+Agents can query Magoo directly through its read-only MCP server (Node.js 20.19+):
+
+```json
+{
+  "mcpServers": {
+    "magoo": { "command": "npx", "args": ["-y", "@acessibilidade/magoo-mcp@1.6.0"] }
+  }
+}
+```
+
+Magoo is educational guidance, not a certification: verify each behavior in the implementation.
 
 ## Color
 
@@ -93,7 +118,7 @@ Icons from [Lucide](https://lucide.dev) (`lucide-react`), the same set shadcn us
 
 ## Components
 
-PUI ships 15 components: Button, Badge, Input, Textarea, Label, Select, Checkbox, Switch, Card, Alert, Tabs, Table, Separator, Skeleton, Avatar. They start from the shadcn/ui source, adjusted to the PUI tokens (destructive text pairs, solid focus ring, badge radius, `success` and `warning` variants). Any other shadcn/ui component (Dialog, DropdownMenu, Sheet, Sonner, Command…) also works: it inherits the PUI tokens automatically.
+PUI ships 17 components: Alert, Avatar, Badge, Button, Card, Checkbox, Field, Input, Label, PasswordInput, Select, Separator, Skeleton, Switch, Table, Tabs, Textarea. They start from the shadcn/ui source, adjusted to the PUI tokens (destructive text pairs, solid focus ring, badge radius, `success` and `warning` variants) and to the Magoo behavior rules (urgency-based alert roles, hover and pressed feedback, mixed checkbox, keyboard-scrollable tables, reduced motion). Any other shadcn/ui component (Dialog, DropdownMenu, Sheet, Sonner, Command…) also works: it inherits the PUI tokens automatically.
 
 ## Using it in code
 

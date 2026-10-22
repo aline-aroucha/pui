@@ -15,6 +15,14 @@ code { font-family: var(--font-mono); font-size: 13px; }
 .topbar-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
 .menu-btn { display: none; }
 
+.skip-link { position: absolute; left: 16px; top: -48px; z-index: 20; padding: 8px 12px; border-radius: var(--radius-md);
+  background: var(--primary); color: var(--primary-foreground); font-weight: 500; text-decoration: none; }
+.skip-link:focus { top: 8px; outline: 2px solid var(--ring); outline-offset: 2px; }
+.content:focus { outline: none; }
+.prose pre:focus-visible, .table-wrap:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.site-footer { border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: 13px; line-height: 20px;
+  padding-block: 24px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); text-align: center; }
+.site-footer p { margin: 0; }
 .shell { display: grid; grid-template-columns: 240px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
 .sidebar { position: sticky; top: 56px; align-self: start; height: calc(100vh - 56px); overflow-y: auto;
   padding: 24px 16px; display: flex; flex-direction: column; gap: 24px; border-right: 1px solid var(--border); }
@@ -52,6 +60,7 @@ code { font-family: var(--font-mono); font-size: 13px; }
 
 .preview-frame { font-family: var(--font-sans); margin: 24px 0; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--background); font-size: 14px; line-height: 20px; overflow-x: auto; }
 .preview-frame .pui-stage { padding: 32px 24px; }
+.preview-frame p { margin: 0; }
 details.code summary { cursor: pointer; color: var(--muted-foreground); font-size: 14px; }
 
 .copy-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }

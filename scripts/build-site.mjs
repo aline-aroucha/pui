@@ -19,6 +19,8 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const tokens = JSON.parse(read("tokens/tokens.json"))
 const colors = tokens.color.tokens
 const components = readdirSync(join(root, "preview/examples")).map((f) => f.replace(/\.js$/, "")).sort()
+const MAGOO_VERSION = "1.6.0"
+const slug = (name) => name.replace(/(?<!^)(?=[A-Z])/g, "-").toLowerCase()
 
 // ------------------------------------------------------------ tokens.css
 const cssValue = (v) => (v.startsWith("{") ? `var(--${v.slice(1, -1)})` : v)
@@ -45,7 +47,7 @@ const tokensCss = [
 const NAV = [
   ["Get started", [["index.html", "Overview"], ["ai.html", "Use with AI"]]],
   ["Foundations", [["colors.html", "Colors"], ["typography.html", "Typography"], ["spacing.html", "Spacing, radius and shadow"]]],
-  ["Components", components.map((c) => [`components/${c.toLowerCase()}.html`, c])],
+  ["Components", components.map((c) => [`components/${slug(c)}.html`, c])],
 ]
 
 function page(path, title, body, { scripts = "" } = {}) {
@@ -73,6 +75,7 @@ function page(path, title, body, { scripts = "" } = {}) {
 <link rel="stylesheet" href="${base}assets/site.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar">
   <a class="brand" href="${base}index.html">PUI</a>
   <span class="brand-sub">design system</span>
@@ -84,8 +87,11 @@ function page(path, title, body, { scripts = "" } = {}) {
 </header>
 <div class="shell">
   <nav class="sidebar" id="sidebar" aria-label="Documentation">${nav}</nav>
-  <main class="content">${body}</main>
+  <main class="content" id="main" tabindex="-1">${body.replace(/<pre>/g, '<pre tabindex="0">')}</main>
 </div>
+<footer class="site-footer">
+  <p>Behavior and accessibility follow <a href="https://magoo.cc/en">Magoo</a> ${MAGOO_VERSION} by Marcelo Sales (MIT). Components start from <a href="https://ui.shadcn.com">shadcn/ui</a> (MIT).</p>
+</footer>
 <script src="${base}assets/site.js"></script>
 ${scripts}
 </body>
@@ -178,7 +184,7 @@ write(
     "colors.html",
     "Colors",
     `<article class="prose"><h1>Colors</h1><p class="lead">Neutrals with a slight lean toward the brand green, and one brand color, <code>primary</code>. In Tailwind each token becomes <code>bg-*</code>, <code>text-*</code> and <code>border-*</code>.</p></article>
-<div class="table-wrap"><table class="pui-table tokens-table"><thead><tr><th>Token</th><th>Light</th><th>Dark</th></tr></thead><tbody>${colorRows}</tbody></table></div>`
+<div class="table-wrap" tabindex="0" role="region" aria-label="Color tokens"><table class="pui-table tokens-table"><thead><tr><th>Token</th><th>Light</th><th>Dark</th></tr></thead><tbody>${colorRows}</tbody></table></div>`
   )
 )
 
@@ -228,8 +234,8 @@ write(
 
 // components
 for (const c of components) {
-  const p = `components/${c.toLowerCase()}.html`
-  const doc = md(read(`docs/components/${c.toLowerCase()}.md`))
+  const p = `components/${slug(c)}.html`
+  const doc = md(read(`docs/components/${slug(c)}.md`))
   const code = read(`preview/examples/${c}.js`)
   const body = `<article class="prose">${doc.replace(/(<\/h1>)/, '$1<div class="preview-frame"><div id="preview" class="pui-stage"></div></div>')}
 <details class="code"><summary>Preview source</summary><pre><code>${esc(code)}</code></pre></details></article>`
@@ -276,12 +282,12 @@ write(
 - \`npx github:aline-aroucha/pui add <component>\`: components from ${abs("r/")}
 
 ## Components
-${components.map((c) => `- [${c}](${abs(`components/${c.toLowerCase()}.html`)}): source ${abs(`r/${c.toLowerCase()}.json`)}`).join("\n")}
+${components.map((c) => `- [${c}](${abs(`components/${slug(c)}.html`)}): source ${abs(`r/${slug(c)}.json`)}`).join("\n")}
 `
 )
 write(
   "llms-full.txt",
-  [read("AGENTS.md"), read("docs/guidelines.md"), ...components.map((c) => read(`docs/components/${c.toLowerCase()}.md`))].join("\n\n---\n\n")
+  [read("AGENTS.md"), read("docs/guidelines.md"), ...components.map((c) => read(`docs/components/${slug(c)}.md`))].join("\n\n---\n\n")
 )
 write(".nojekyll", "")
 if (existsSync(join(root, "public/r"))) cpSync(join(root, "public/r"), join(out, "r"), { recursive: true })

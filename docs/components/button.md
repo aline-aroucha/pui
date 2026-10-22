@@ -25,3 +25,13 @@ npx github:aline-aroucha/pui add button
 - Do: in footers, secondary on the left, primary on the right.
 - Don't: add loose color classes (`bg-teal-600`); change the look only through `variant`.
 - Don't: place two `default` buttons side by side.
+
+## Accessibility
+- Built as a `<button>`. If it runs an action on the same screen it is a button, even when it looks like a link; if it navigates, use a link (`asChild` with `<a>`).
+- Hover, pressed and keyboard focus each give visible feedback; focus shows a solid 2px ring.
+- `Enter` and `Space` activate it; the person can perceive that the action ran (a toast, a state change, a new screen).
+- A disabled button does not take keyboard focus and does nothing. Say nearby what is needed to enable it; don't disable a submit button as the only way to signal errors.
+- The accessible name states the goal without ambiguity, also when several buttons share a screen. Icon-only buttons need `aria-label`.
+- A button that opens a menu or hidden content exposes its state with `aria-expanded` (and `aria-controls`).
+
+_Adapted from Magoo 1.6.0 by Marcelo Sales: [Button](https://magoo.cc/en/components/forms/button.html) (`botao`). Magoo is educational guidance; test the behavior in your implementation._

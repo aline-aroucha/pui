@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "magoo": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@acessibilidade/magoo-mcp@1.6.0"
+      ]
+    }
+  }
+}
