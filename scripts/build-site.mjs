@@ -94,13 +94,12 @@ function shell({ path, title, description, intro = "", sections, related = [], s
   const pageUrl = abs(path)
   const mdUrl = abs(mdPath)
   const aiPrompt = `Answer questions about the following PUI documentation page: ${pageUrl}\nMarkdown source: ${mdUrl}`
-  const current = NAV.find(([, items]) => items.some(([href]) => href === path))?.[0]
 
   const nav = NAV.map(
-    ([group, items]) => `<details class="nav-section"${group === current || group !== "Components" ? " open" : ""}>
-      <summary>${group}</summary>
-      <ul>${items.map(([href, label]) => `<li><a href="${base}${href}"${href === path ? ' aria-current="page"' : ""}>${label}</a></li>`).join("")}</ul>
-    </details>`
+    ([group, items]) => `<div class="nav-section">
+      <p class="nav-heading" id="nav-${anchor(group)}">${group}</p>
+      <ul aria-labelledby="nav-${anchor(group)}">${items.map(([href, label]) => `<li><a href="${base}${href}"${href === path ? ' aria-current="page"' : ""}>${label}</a></li>`).join("")}</ul>
+    </div>`
   ).join("")
 
   const toc = sections.filter((s) => s.title)
@@ -213,28 +212,11 @@ const section = (title, mdText, html) => ({ title, id: anchor(title), md: mdText
 {
   const guide = read("docs/guidelines.md").replace(/^# .*\n+/, "")
   const [lead, ...parts] = guide.split(/^## /m)
-  const cover = `<figure class="cover" aria-hidden="true">
-  <svg viewBox="480 0 480 288">
-    <rect class="a-primary r-xl" x="504" y="24" width="216" height="240"/>
-    <rect class="a-ink r-xl" x="736" y="24" width="200" height="112"/>
-    <rect class="a-deep r-xl" x="736" y="152" width="96" height="112"/>
-    <rect class="a-primary r-xl" x="840" y="152" width="96" height="112"/>
-    <g class="a-tile">
-      <rect class="r-md" x="528" y="48" width="104" height="24"/><rect class="r-md" x="640" y="48" width="56" height="24"/>
-      <rect class="r-md" x="528" y="80" width="48" height="24"/><rect class="r-md" x="584" y="80" width="48" height="24"/><rect class="r-md" x="640" y="80" width="56" height="24"/>
-      <rect class="r-md" x="528" y="112" width="168" height="24"/>
-      <rect class="r-md" x="528" y="144" width="48" height="24"/><rect class="r-md" x="584" y="144" width="112" height="24"/>
-      <rect class="r-md" x="528" y="176" width="104" height="24"/><rect class="r-md" x="640" y="176" width="56" height="24"/>
-      <rect class="r-pill" x="528" y="216" width="48" height="24"/><rect class="r-pill" x="584" y="216" width="48" height="24"/>
-    </g>
-    <g class="a-bg"><rect class="r-pill" x="760" y="48" width="152" height="24"/><rect class="r-pill" x="760" y="88" width="64" height="24"/><rect class="r-pill" x="832" y="88" width="80" height="24"/></g>
-  </svg>
-</figure>`
   emit({
     path: "index.html",
     title: "PUI",
     description: lead.trim(),
-    intro: `${cover}<div class="pui-row cta"><a class="pui-btn pui-btn--default" href="components/button.html">Browse components</a><a class="pui-btn pui-btn--outline" href="ai.html">Use with AI</a></div>`,
+    intro: `<div class="pui-row cta"><a class="pui-btn pui-btn--default" href="components/button.html">Browse components</a><a class="pui-btn pui-btn--outline" href="ai.html">Use with AI</a></div>`,
     sections: parts.map((p) => {
       const [head, ...rest] = p.split("\n")
       return section(head.trim(), rest.join("\n").trim())
