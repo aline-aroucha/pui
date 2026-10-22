@@ -10,7 +10,7 @@ body { background: var(--background); color: var(--foreground); font-family: var
 
 .pui-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; border: 1px solid transparent;
   border-radius: var(--radius-md); font: 500 14px/20px var(--font-sans); height: 36px; padding: 0 16px; cursor: pointer; transition: background-color .15s, color .15s; }
-.pui-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pui-btn svg { width: 16px; height: 16px; fill: currentColor; }
 .pui-btn:disabled { opacity: .5; pointer-events: none; }
 .pui-btn:active { transform: translateY(1px); }
 .pui-btn--default { background: var(--primary); color: var(--primary-foreground); box-shadow: var(--shadow-xs); }
@@ -46,13 +46,13 @@ body { background: var(--background); color: var(--foreground); font-family: var
 .pui-select { position: relative; width: 100%; }
 .pui-select select { appearance: none; box-sizing: border-box; width: 100%; height: 36px; border: 1px solid var(--input); border-radius: var(--radius-md);
   background: var(--background); color: var(--foreground); font: 400 14px/20px var(--font-sans); padding: 0 36px 0 12px; box-shadow: var(--shadow-xs); }
-.pui-select svg { position: absolute; right: 12px; top: 10px; width: 16px; height: 16px; fill: none; stroke: var(--muted-foreground); stroke-width: 2; pointer-events: none; }
+.pui-select svg { position: absolute; right: 12px; top: 10px; width: 16px; height: 16px; fill: var(--muted-foreground); pointer-events: none; }
 
 .pui-checkbox { box-sizing: border-box; width: 16px; height: 16px; padding: 0; display: inline-grid; place-items: center; border: 1px solid var(--input);
   border-radius: var(--radius-sm); background: var(--background); color: var(--primary-foreground); cursor: pointer; box-shadow: var(--shadow-xs); }
 .pui-checkbox:hover, .pui-select select:hover { border-color: var(--primary); }
 .pui-checkbox[data-state="checked"], .pui-checkbox[data-state="indeterminate"] { background: var(--primary); border-color: var(--primary); }
-.pui-checkbox svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pui-checkbox svg { width: 14px; height: 14px; fill: currentColor; }
 .pui-checkbox:disabled { opacity: .5; cursor: not-allowed; }
 .pui-switch { box-sizing: border-box; width: 34px; height: 20px; padding: 1px; border: 1px solid var(--input); border-radius: var(--radius-full);
   background: var(--input); cursor: pointer; display: inline-flex; align-items: center; transition: background-color .15s; }
@@ -61,7 +61,7 @@ body { background: var(--background); color: var(--foreground); font-family: var
 .pui-optional { color: var(--muted-foreground); font-weight: 400; }
 .pui-field__description { margin: 0; color: var(--muted-foreground); font-size: 14px; line-height: 20px; }
 .pui-field__error { margin: 0; display: flex; gap: 6px; align-items: flex-start; color: var(--destructive); font-size: 14px; line-height: 20px; }
-.pui-field__error svg { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.pui-field__error svg { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; fill: currentColor; }
 .pui-password { display: flex; gap: 8px; align-items: center; }
 .pui-password .pui-input { flex: 1; min-width: 0; }
 .pui-switch__thumb { width: 16px; height: 16px; border-radius: var(--radius-full); background: var(--background); transition: transform .15s; }

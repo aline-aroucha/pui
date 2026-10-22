@@ -8,7 +8,7 @@ npx github:aline-aroucha/pui add alert
 
 ## What you provide
 - `variant`: `default` | `destructive`.
-- A 16px `lucide-react` icon as the first child (the Alert positions it).
+- A 16px Heroicons Micro icon as the first child (the Alert positions it), e.g. `ExclamationCircleIcon` for errors.
 - `AlertTitle`: what happened. `AlertDescription`: what to do now.
 
 ## Usage

@@ -21,7 +21,7 @@ Local copy: `docs/guidelines.md`, `docs/components/*.md`, `tokens/tokens.json`.
 - Radii: `rounded-md` (controls), `rounded-lg` (alert, popover, dialog), `rounded-xl` (card), `rounded-full` (avatar, switch).
 - UI text: `text-sm`. Headings: `text-4xl/3xl/2xl/xl font-semibold tracking-tight` (h1 is `font-extrabold`).
 - Numbers in tables: `text-right font-mono tabular-nums`. en-US format: `$1,280.00`, `Oct 21, 2026`.
-- Icons: `lucide-react`, `size-4` in buttons and fields.
+- Icons: Heroicons (`@heroicons/react`). Micro `16/solid` with `size-4` in buttons and fields, Mini `20/solid` in menus and lists, Outline `24/outline` in navigation. Never `lucide-react`; swap the icons of any added shadcn component (see the table in `docs/guidelines.md`).
 - UI copy in US English, sentence case, clear verbs on buttons ("Save changes").
 - Accessibility: a `Label` on every field, `aria-label` on icon-only buttons, status shown with an icon or word besides color.
 

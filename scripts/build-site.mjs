@@ -73,13 +73,18 @@ const searchIndex = NAV.flatMap(([group, items]) =>
 )
 
 // ------------------------------------------------------------ page shell
+// Site icons are Heroicons Micro (16px solid), read from the heroicons package
+const heroicon = (name) =>
+  readFileSync(join(root, "node_modules/heroicons/16/solid", name + ".svg"), "utf8")
+    .replace(/\s*xmlns="[^"]*"/, "")
+    .replace(/\n\s*/g, "")
 const icon = {
-  search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
-  copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
-  more: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
-  theme: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>',
-  menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>',
-  external: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  search: heroicon("magnifying-glass"),
+  copy: heroicon("clipboard-document"),
+  more: heroicon("chevron-down"),
+  theme: heroicon("moon"),
+  menu: heroicon("bars-3"),
+  external: heroicon("arrow-top-right-on-square"),
 }
 
 function shell({ path, title, description, intro = "", sections, related = [], scripts = "" }) {

@@ -15,7 +15,7 @@ Read this section before generating any PUI interface.
 7. **One primary action per area.** The others are `secondary`, `outline` or `ghost`.
 8. **UI copy in US English**, sentence case, en-US formats (`$1,280.00`, `Oct 21, 2026`, `9:42 AM`).
 9. **Accessibility:** every control has a `Label`; icon-only buttons have an `aria-label`; status is never conveyed by color alone (add an icon or a word).
-10. **Icons:** `lucide-react`, 16px (`size-4`) in controls and 20px in headings, default `stroke-width`. Decorative icons get `aria-hidden="true"`.
+10. **Icons:** [Heroicons](https://heroicons.com) from `@heroicons/react`, at the size each style was drawn for: Micro (`16/solid`, `size-4`) in buttons, fields and badges; Mini (`20/solid`, `size-5`) in menus, lists and next to headings; Outline (`24/outline`, `size-6`) in navigation and empty states. Never `lucide-react`. Decorative icons stay hidden from screen readers (Heroicons sets `aria-hidden` by default).
 11. **Behavior follows [Magoo](https://magoo.cc/en).** Before building or changing a component, read its Magoo page (or ask the Magoo MCP) and meet its keyboard, screen reader, touch and acceptance criteria.
 
 ## Behavior and accessibility
@@ -114,7 +114,34 @@ Neutrals lean slightly toward the brand green so they don't read as stock gray. 
 
 ## Iconography
 
-Icons from [Lucide](https://lucide.dev) (`lucide-react`), the same set shadcn uses. 2px stroke, rounded caps, inherit `currentColor`. PUI has no logo yet: the name is set in type. When a mark exists, it goes in the "Logos" asset group.
+Icons come from [Heroicons](https://heroicons.com) (MIT), by the makers of Tailwind CSS, through `@heroicons/react`. Each style is drawn for one size, so pick the style by size instead of scaling:
+
+| Style | Import | Size | Use |
+| --- | --- | --- | --- |
+| Micro | `@heroicons/react/16/solid` | 16px, `size-4` | Inside buttons, fields, badges, alerts, table cells |
+| Mini | `@heroicons/react/20/solid` | 20px, `size-5` | Menus, lists, next to `h3`/`h4` headings |
+| Outline | `@heroicons/react/24/outline` | 24px, `size-6` | Primary navigation, empty states, large actions |
+| Solid | `@heroicons/react/24/solid` | 24px, `size-6` | Selected state of an Outline icon (e.g. active tab bar item) |
+
+- Icons inherit `currentColor`; color them with text tokens (`text-muted-foreground`, `text-destructive`), never with hex.
+- An icon next to text is decorative: Heroicons renders `aria-hidden="true"` by default. An icon-only button needs `aria-label` on the button.
+- Status icons pair with a word: `CheckCircleIcon` + "Paid", `ExclamationTriangleIcon` + "Pending", `ExclamationCircleIcon` + "Declined".
+- Components from shadcn/ui that PUI doesn't ship import `lucide-react`; replace those icons with their Heroicons match before using them:
+
+| lucide-react | Heroicons |
+| --- | --- |
+| `Check` | `CheckIcon` |
+| `ChevronDown` / `ChevronUp` / `ChevronRight` | `ChevronDownIcon` / `ChevronUpIcon` / `ChevronRightIcon` |
+| `X` | `XMarkIcon` |
+| `Search` | `MagnifyingGlassIcon` |
+| `Plus` / `Minus` | `PlusIcon` / `MinusIcon` |
+| `CircleAlert` / `TriangleAlert` / `Info` | `ExclamationCircleIcon` / `ExclamationTriangleIcon` / `InformationCircleIcon` |
+| `Eye` / `EyeOff` | `EyeIcon` / `EyeSlashIcon` |
+| `Loader2` | `ArrowPathIcon` with `motion-safe:animate-spin` |
+| `MoreHorizontal` | `EllipsisHorizontalIcon` |
+| `Calendar` | `CalendarIcon` |
+
+PUI has no logo yet: the name is set in type. When a mark exists, it goes in the "Logos" asset group.
 
 ## Components
 

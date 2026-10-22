@@ -21,7 +21,7 @@ npx github:aline-aroucha/pui add button
 - `link`: navigation inside text.
 
 ## Do / don't
-- Do: put a 16px `lucide-react` icon before the label; `gap-2` is built in.
+- Do: put a 16px Heroicons Micro icon (`@heroicons/react/16/solid`) before the label; `gap-2` is built in.
 - Do: in footers, secondary on the left, primary on the right.
 - Don't: add loose color classes (`bg-teal-600`); change the look only through `variant`.
 - Don't: place two `default` buttons side by side.

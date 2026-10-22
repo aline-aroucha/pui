@@ -10,7 +10,7 @@ A design system on top of [shadcn/ui](https://ui.shadcn.com), ready to be used b
 | --- | --- |
 | `tokens/tokens.json` | Source of truth: colors (light/dark), typography, spacing, radius, shadow. |
 | `src/styles/globals.css` | The tokens as shadcn CSS variables + the Tailwind v4 `@theme`. |
-| `components.json` | shadcn CLI config (new-york style, lucide icons). |
+| `components.json` | shadcn CLI config (new-york style). Icons are Heroicons; the shadcn CLI has no Heroicons option, so `iconLibrary` stays at its default. |
 | `registry.json` + `registry/` | The PUI registry: style, `cn()` and the source of the 17 components. |
 | `.mcp.json` | Adds the Magoo MCP (behavior and accessibility guidance) to Claude Code. |
 | `cli/pui.mjs` | The `pui` command: `init`, `add`, `list`. |

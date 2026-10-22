@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CircleAlertIcon } from "lucide-react"
+import { ExclamationCircleIcon } from "@heroicons/react/16/solid"
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
@@ -139,7 +139,7 @@ function FieldError({ className, children, ...props }: React.ComponentProps<"p">
       className={cn("flex items-start gap-1.5 text-sm text-destructive", className)}
       {...props}
     >
-      <CircleAlertIcon aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
+      <ExclamationCircleIcon aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
       <span>{children}</span>
     </p>
   )

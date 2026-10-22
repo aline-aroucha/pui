@@ -13,7 +13,7 @@
         "tw-animate-css",
         "clsx",
         "tailwind-merge",
-        "lucide-react",
+        "@heroicons/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
@@ -237,7 +237,7 @@
       "title": "Checkbox",
       "description": "PUI Checkbox. Docs: https://aline-aroucha.github.io/pui/components/checkbox.html",
       "dependencies": [
-        "lucide-react",
+        "@heroicons/react",
         "radix-ui"
       ],
       "registryDependencies": [
@@ -256,7 +256,7 @@
       "title": "Field",
       "description": "PUI Field. Docs: https://aline-aroucha.github.io/pui/components/field.html",
       "dependencies": [
-        "lucide-react"
+        "@heroicons/react"
       ],
       "registryDependencies": [
         "https://aline-aroucha.github.io/pui/r/utils.json",
@@ -309,7 +309,7 @@
       "title": "Password input",
       "description": "PUI Password-input. Docs: https://aline-aroucha.github.io/pui/components/password-input.html",
       "dependencies": [
-        "lucide-react"
+        "@heroicons/react"
       ],
       "registryDependencies": [
         "https://aline-aroucha.github.io/pui/r/utils.json",
@@ -329,7 +329,7 @@
       "title": "Select",
       "description": "PUI Select. Docs: https://aline-aroucha.github.io/pui/components/select.html",
       "dependencies": [
-        "lucide-react",
+        "@heroicons/react",
         "radix-ui"
       ],
       "registryDependencies": [

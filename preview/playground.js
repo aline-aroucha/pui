@@ -270,7 +270,7 @@
     var field = c.type === "select"
       ? h("div", { className: "pui-select" }, h("select", { id: id, value: value, onChange: function (e) { onChange(e.target.value) } },
           c.options.map(function (o) { return h("option", { key: o, value: o }, o) })),
-          h("svg", { viewBox: "0 0 24 24", "aria-hidden": true }, h("path", { d: "m6 9 6 6 6-6" })))
+          h(P.Icon, { name: "chevron-down" }))
       : h("input", { id: id, className: "pui-input", value: value, onChange: function (e) { onChange(e.target.value) } })
     return h("div", { className: "vx-control", key: c.name }, h("label", { htmlFor: id, className: "vx-label" }, c.name), field)
   }

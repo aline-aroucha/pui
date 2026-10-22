@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { EyeIcon, EyeOffIcon } from "lucide-react"
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -35,7 +35,7 @@ function PasswordInput({
         aria-controls={props.id}
         onClick={() => setVisible((current) => !current)}
       >
-        {visible ? <EyeOffIcon aria-hidden="true" /> : <EyeIcon aria-hidden="true" />}
+        {visible ? <EyeSlashIcon aria-hidden="true" /> : <EyeIcon aria-hidden="true" />}
         {visible ? hideLabel : showLabel}
       </Button>
     </div>

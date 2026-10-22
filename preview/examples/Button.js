@@ -11,5 +11,5 @@ var P = window.PUI, h = React.createElement;
       h(P.Button, { size: 'sm' }, 'Small'),
       h(P.Button, { size: 'lg' }, 'Large'),
       h(P.Button, { size: 'icon', variant: 'outline', 'aria-label': 'Add' },
-        h('svg', { viewBox: '0 0 24 24' }, h('path', { d: 'M12 5v14M5 12h14' }))),
+        h(P.Icon, { name: 'plus' })),
       h(P.Button, { disabled: true }, 'Disabled'))));
