@@ -3,7 +3,7 @@
 Tabular data. Parts: `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption`. For sorting, filters and pagination, drive it with TanStack Table.
 
 ```bash
-npx github:aline-aroucha/pui add table badge
+npx @aline-aroucha/pui add table badge
 ```
 
 ## What you provide

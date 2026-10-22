@@ -3,7 +3,7 @@
 Single-line text field.
 
 ```bash
-npx github:aline-aroucha/pui add input label
+npx @aline-aroucha/pui add input label
 ```
 
 ## What you provide

@@ -3,7 +3,7 @@
 Loading placeholder shaped like the content that is on its way.
 
 ```bash
-npx github:aline-aroucha/pui add skeleton
+npx @aline-aroucha/pui add skeleton
 ```
 
 ## What you provide

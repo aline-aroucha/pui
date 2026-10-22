@@ -122,7 +122,7 @@ switch (command) {
     shadcn("add", url("style"))
     writeAgentRules()
     addMagooMcp()
-    console.log("\nPUI is ready. Next: npx github:aline-aroucha/pui add button")
+    console.log("\nPUI is ready. Next: npx @aline-aroucha/pui add button")
     break
   }
   case "add": {

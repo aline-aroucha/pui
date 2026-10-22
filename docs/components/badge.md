@@ -3,7 +3,7 @@
 Short status or category label.
 
 ```bash
-npx github:aline-aroucha/pui add badge
+npx @aline-aroucha/pui add badge
 ```
 
 ## What you provide

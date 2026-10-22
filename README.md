@@ -25,15 +25,15 @@ A design system on top of [shadcn/ui](https://ui.shadcn.com), ready to be used b
 In a React project with Tailwind v4 (Next.js or Vite):
 
 ```bash
-npx github:aline-aroucha/pui init                 # style, cn(), AGENTS.md, CLAUDE.md, Magoo MCP
-npx github:aline-aroucha/pui add button card input # any of the 17 components
-npx github:aline-aroucha/pui list
+npx @aline-aroucha/pui init                 # style, cn(), AGENTS.md, CLAUDE.md, Magoo MCP
+npx @aline-aroucha/pui add button card input # any of the 17 components
+npx @aline-aroucha/pui list
 ```
 
 The `pui` CLI (`cli/pui.mjs`, no dependencies) installs from the PUI registry at https://aline-aroucha.github.io/pui/r/ using the shadcn CLI under the hood.
 Fonts (Next.js): `import { Geist, Geist_Mono } from "next/font/google"` and apply the `--font-sans` / `--font-mono` variables on `<html>`.
 
-To shorten the command to `npx @aline-aroucha/pui`, publish the package once: `npm login && npm publish --access public`.
+The CLI is published on npm as [`@aline-aroucha/pui`](https://www.npmjs.com/package/@aline-aroucha/pui). To release a new version: bump `version` in `package.json`, then `npm publish`.
 
 ## Behavior and accessibility
 

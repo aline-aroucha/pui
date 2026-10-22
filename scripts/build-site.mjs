@@ -249,10 +249,10 @@ const section = (title, mdText, html) => ({ title, id: anchor(title), md: mdText
   const rows = (items) => items.map(([l, v]) => copyRow(l, v)).join("")
   const listMd = (items) => items.map(([l, v]) => `- ${l}: \`${v}\``).join("\n")
   const install = [
-    ["Set up the project (style, cn(), AGENTS.md, CLAUDE.md, Magoo MCP)", "npx github:aline-aroucha/pui init"],
-    ["Add components", "npx github:aline-aroucha/pui add button card input"],
-    ["Add every component", "npx github:aline-aroucha/pui add --all"],
-    ["Update installed components", "npx github:aline-aroucha/pui add --all --overwrite"],
+    ["Set up the project (style, cn(), AGENTS.md, CLAUDE.md, Magoo MCP)", "npx @aline-aroucha/pui init"],
+    ["Add components", "npx @aline-aroucha/pui add button card input"],
+    ["Add every component", "npx @aline-aroucha/pui add --all"],
+    ["Update installed components", "npx @aline-aroucha/pui add --all --overwrite"],
   ]
   const files = [
     ["Index for LLMs", abs("llms.txt")],
@@ -377,7 +377,7 @@ for (const c of components) {
   const info = api[c]
   const raw = read(`docs/components/${s}.md`).replace(/^# .*\n+/, "")
   const [intro, ...parts] = raw.split(/^## /m)
-  const install = (intro.match(/```bash\n([\s\S]*?)```/) || [])[1]?.trim() || `npx github:aline-aroucha/pui add ${s}`
+  const install = (intro.match(/```bash\n([\s\S]*?)```/) || [])[1]?.trim() || `npx @aline-aroucha/pui add ${s}`
   const lead = intro.replace(/```bash[\s\S]*?```/, "").trim()
   const access = parts.find((p) => p.startsWith("Accessibility"))
   const usage = parts.filter((p) => p !== access).map((p) => "### " + p.trim()).join("\n\n")
@@ -448,8 +448,8 @@ Every page has a Markdown twin: replace \`.html\` with \`.md\`.
 - [Colors](${abs("colors.md")}), [Typography](${abs("typography.md")}), [Spacing](${abs("spacing.md")})
 
 ## Install
-- \`npx github:aline-aroucha/pui init\`: style, cn() helper, AGENTS.md, CLAUDE.md, Magoo MCP
-- \`npx github:aline-aroucha/pui add <component>\`: components from ${abs("r/")}
+- \`npx @aline-aroucha/pui init\`: style, cn() helper, AGENTS.md, CLAUDE.md, Magoo MCP
+- \`npx @aline-aroucha/pui add <component>\`: components from ${abs("r/")}
 
 ## Components
 ${components.map((c) => `- [${c}](${abs(`components/${slug(c)}.md`)}): ${api[c].description}`).join("\n")}

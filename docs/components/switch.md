@@ -3,7 +3,7 @@
 Turns a setting on or off with immediate effect.
 
 ```bash
-npx github:aline-aroucha/pui add switch
+npx @aline-aroucha/pui add switch
 ```
 
 ## What you provide

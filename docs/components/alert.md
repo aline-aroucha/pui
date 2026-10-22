@@ -3,7 +3,7 @@
 Persistent message inside the page. Parts: `AlertTitle`, `AlertDescription`.
 
 ```bash
-npx github:aline-aroucha/pui add alert
+npx @aline-aroucha/pui add alert
 ```
 
 ## What you provide

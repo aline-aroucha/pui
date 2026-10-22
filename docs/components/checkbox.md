@@ -3,7 +3,7 @@
 Turns an option on or off; it takes effect when the form is saved.
 
 ```bash
-npx github:aline-aroucha/pui add checkbox
+npx @aline-aroucha/pui add checkbox
 ```
 
 ## What you provide

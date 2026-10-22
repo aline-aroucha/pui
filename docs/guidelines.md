@@ -6,7 +6,7 @@ PUI is a design system built on [shadcn/ui](https://ui.shadcn.com): the same com
 
 Read this section before generating any PUI interface.
 
-1. **Use the PUI components** from `@/components/ui/*`. Install what is missing with `npx github:aline-aroucha/pui add <name>`. Don't hand-build Button, Input, Select and so on.
+1. **Use the PUI components** from `@/components/ui/*`. Install what is missing with `npx @aline-aroucha/pui add <name>`. Don't hand-build Button, Input, Select and so on.
 2. **Color only through tokens.** Use the semantic Tailwind classes generated from the tokens: `bg-background`, `text-foreground`, `bg-primary text-primary-foreground`, `text-muted-foreground`, `border-border`, `bg-success text-success-foreground`. **Never** use hex, `rgb()` or the Tailwind palette (`bg-teal-600`, `text-gray-500`, `bg-white`, `text-black`).
 3. **Every background has its text pair.** `bg-primary` → `text-primary-foreground`; `bg-accent` → `text-accent-foreground`. Don't put `text-white` on a color: in the dark theme the pair is dark text.
 4. **Dark mode is automatic** through the `.dark` class on `<html>`. Don't write `dark:` color overrides; the tokens already switch.
@@ -152,8 +152,8 @@ PUI ships 17 components: Alert, Avatar, Badge, Button, Card, Checkbox, Field, In
 In a React project with Tailwind v4 (Next.js or Vite):
 
 ```bash
-npx github:aline-aroucha/pui init
-npx github:aline-aroucha/pui add button input label card
+npx @aline-aroucha/pui init
+npx @aline-aroucha/pui add button input label card
 ```
 
 `init` sets up the project, installs the PUI theme and writes `AGENTS.md` + `CLAUDE.md`, the files that make Claude, Cursor and Copilot follow these rules.

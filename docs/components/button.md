@@ -3,7 +3,7 @@
 Triggers an action.
 
 ```bash
-npx github:aline-aroucha/pui add button
+npx @aline-aroucha/pui add button
 ```
 
 ## What you provide

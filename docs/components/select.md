@@ -3,7 +3,7 @@
 Pick one option from a list. It opens a styled, keyboard-accessible list; the preview above shows its closed state.
 
 ```bash
-npx github:aline-aroucha/pui add select
+npx @aline-aroucha/pui add select
 ```
 
 ## What you provide

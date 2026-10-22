@@ -3,7 +3,7 @@
 Ties a label, instructions and an error message to one form control, so they are announced together.
 
 ```bash
-npx github:aline-aroucha/pui add field
+npx @aline-aroucha/pui add field
 ```
 
 ## What you provide

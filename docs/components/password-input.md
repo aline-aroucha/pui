@@ -3,7 +3,7 @@
 Password field with a button that shows or hides the characters.
 
 ```bash
-npx github:aline-aroucha/pui add password-input
+npx @aline-aroucha/pui add password-input
 ```
 
 ## What you provide

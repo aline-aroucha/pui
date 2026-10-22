@@ -6,7 +6,7 @@ Local copy: `docs/guidelines.md`, `docs/components/*.md`, `tokens/tokens.json`.
 
 ## Always
 
-- Use components from `@/components/ui/*`. If one is missing, run `npx github:aline-aroucha/pui add <component>`. Don't rebuild components PUI already has.
+- Use components from `@/components/ui/*`. If one is missing, run `npx @aline-aroucha/pui add <component>`. Don't rebuild components PUI already has.
 - Color **only** through semantic classes: `bg-background`, `text-foreground`, `bg-card`, `bg-primary text-primary-foreground`,
   `bg-secondary`, `bg-muted text-muted-foreground`, `bg-accent text-accent-foreground`, `bg-destructive text-destructive-foreground`,
   `bg-success text-success-foreground`, `bg-warning text-warning-foreground`, `border-border`, `border-input`, `ring-ring`,

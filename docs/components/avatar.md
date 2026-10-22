@@ -3,7 +3,7 @@
 A person's photo or initials. Parts: `AvatarImage`, `AvatarFallback`.
 
 ```bash
-npx github:aline-aroucha/pui add avatar
+npx @aline-aroucha/pui add avatar
 ```
 
 ## What you provide

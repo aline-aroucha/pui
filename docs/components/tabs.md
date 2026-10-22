@@ -3,7 +3,7 @@
 Switches between views of the same context without leaving the page. Parts: `TabsList`, `TabsTrigger`, `TabsContent`.
 
 ```bash
-npx github:aline-aroucha/pui add tabs
+npx @aline-aroucha/pui add tabs
 ```
 
 ## What you provide

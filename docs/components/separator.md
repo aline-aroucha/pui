@@ -3,7 +3,7 @@
 A 1px divider in `border`.
 
 ```bash
-npx github:aline-aroucha/pui add separator
+npx @aline-aroucha/pui add separator
 ```
 
 ## What you provide

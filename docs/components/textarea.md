@@ -3,7 +3,7 @@
 Multi-line text field. The `Input` rules apply.
 
 ```bash
-npx github:aline-aroucha/pui add textarea
+npx @aline-aroucha/pui add textarea
 ```
 
 ## What you provide
