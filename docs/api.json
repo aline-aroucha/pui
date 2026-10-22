@@ -1,0 +1,242 @@
+{
+  "Alert": {
+    "description": "Shows a persistent message inside the page, announced by urgency.",
+    "related": ["Badge", "Field", "Skeleton"],
+    "anatomy": "<Alert>\n  <Icon />\n  <AlertTitle />\n  <AlertDescription />\n</Alert>",
+    "parts": {
+      "Alert": [
+        { "name": "variant", "type": "\"default\" | \"destructive\"", "default": "\"default\"", "description": "Style and urgency. `destructive` uses role=\"alert\"; `default` uses role=\"status\"." },
+        { "name": "role", "type": "string", "default": "by variant", "description": "Overrides the announcement role." },
+        { "name": "children", "type": "ReactNode", "description": "An optional icon, then AlertTitle and AlertDescription." }
+      ],
+      "AlertTitle": [{ "name": "children", "type": "ReactNode", "description": "What happened." }],
+      "AlertDescription": [{ "name": "children", "type": "ReactNode", "description": "What to do now." }]
+    }
+  },
+  "Avatar": {
+    "description": "Shows a person's photo, with their initials as a fallback.",
+    "related": ["Card", "Table"],
+    "anatomy": "<Avatar>\n  <AvatarImage />\n  <AvatarFallback />\n  <AvatarBadge />\n</Avatar>\n\n<AvatarGroup>\n  <Avatar />\n  <AvatarGroupCount />\n</AvatarGroup>",
+    "parts": {
+      "Avatar": [{ "name": "size", "type": "\"sm\" | \"default\" | \"lg\"", "default": "\"default\"", "description": "Avatar size; default is 32px." }],
+      "AvatarImage": [
+        { "name": "src", "type": "string", "required": true, "description": "Image URL." },
+        { "name": "alt", "type": "string", "required": true, "description": "The person's name, or \"\" when the name is written next to the avatar." }
+      ],
+      "AvatarFallback": [{ "name": "children", "type": "ReactNode", "description": "Two initials, shown while the image loads or when it fails." }],
+      "AvatarBadge": [{ "name": "children", "type": "ReactNode", "description": "A small status mark; give it a text alternative." }],
+      "AvatarGroupCount": [{ "name": "children", "type": "ReactNode", "description": "How many more people the group holds, e.g. \"+3\"." }]
+    }
+  },
+  "Badge": {
+    "description": "Labels a status or a category with one or two words.",
+    "related": ["Alert", "Table"],
+    "anatomy": "<Badge>\n  <Icon />\n  Text\n</Badge>",
+    "parts": {
+      "Badge": [
+        { "name": "variant", "type": "\"default\" | \"secondary\" | \"outline\" | \"ghost\" | \"link\" | \"destructive\" | \"success\" | \"warning\"", "default": "\"default\"", "description": "Visual style. Status variants always pair color with a word or symbol." },
+        { "name": "asChild", "type": "boolean", "default": "false", "description": "Renders its child (e.g. a link) with the badge style." },
+        { "name": "children", "type": "ReactNode", "required": true, "description": "The label." }
+      ]
+    }
+  },
+  "Button": {
+    "description": "Triggers an action on the current screen.",
+    "related": ["Badge", "Field", "PasswordInput"],
+    "anatomy": "<Button>\n  <Icon />\n  Label\n</Button>",
+    "parts": {
+      "Button": [
+        { "name": "variant", "type": "\"default\" | \"secondary\" | \"outline\" | \"ghost\" | \"destructive\" | \"link\"", "default": "\"default\"", "description": "Emphasis. Use one `default` button per area." },
+        { "name": "size", "type": "\"xs\" | \"sm\" | \"default\" | \"lg\" | \"icon-xs\" | \"icon-sm\" | \"icon\" | \"icon-lg\"", "default": "\"default\"", "description": "Height from 24px to 40px; `icon` sizes are square and need `aria-label`." },
+        { "name": "asChild", "type": "boolean", "default": "false", "description": "Renders its child (e.g. a link) with the button style." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Removes the button from the tab order and blocks the action." },
+        { "name": "type", "type": "\"button\" | \"submit\" | \"reset\"", "default": "\"submit\" in forms", "description": "Native button type." },
+        { "name": "onClick", "type": "(event: MouseEvent) => void", "description": "Runs on click, Enter and Space." },
+        { "name": "children", "type": "ReactNode", "required": true, "description": "An optional icon, then a verb that says what happens." }
+      ]
+    }
+  },
+  "Card": {
+    "description": "Groups content about one subject on a raised surface.",
+    "related": ["Separator", "Table"],
+    "anatomy": "<Card>\n  <CardHeader>\n    <CardTitle />\n    <CardDescription />\n    <CardAction />\n  </CardHeader>\n  <CardContent />\n  <CardFooter />\n</Card>",
+    "parts": {
+      "Card": [{ "name": "children", "type": "ReactNode", "description": "Header, content and footer." }],
+      "CardTitle": [{ "name": "children", "type": "ReactNode", "description": "Short title; use a heading level that fits the page." }],
+      "CardDescription": [{ "name": "children", "type": "ReactNode", "description": "One sentence of context." }],
+      "CardAction": [{ "name": "children", "type": "ReactNode", "description": "A control placed at the header's end." }],
+      "CardFooter": [{ "name": "children", "type": "ReactNode", "description": "Actions; the primary one goes last." }]
+    }
+  },
+  "Checkbox": {
+    "description": "Turns an independent option on or off; the choice is saved with the form.",
+    "related": ["Switch", "Label", "Field"],
+    "anatomy": "<Checkbox />\n<Label />",
+    "parts": {
+      "Checkbox": [
+        { "name": "checked", "type": "boolean | \"indeterminate\"", "description": "Controlled state; `\"indeterminate\"` shows the mixed state." },
+        { "name": "defaultChecked", "type": "boolean | \"indeterminate\"", "default": "false", "description": "Initial state when uncontrolled." },
+        { "name": "onCheckedChange", "type": "(checked: boolean | \"indeterminate\") => void", "description": "Runs when the state changes." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Blocks changes." },
+        { "name": "required", "type": "boolean", "default": "false", "description": "Must be checked to submit." },
+        { "name": "name", "type": "string", "description": "Form field name." },
+        { "name": "value", "type": "string", "default": "\"on\"", "description": "Value sent with the form." }
+      ]
+    }
+  },
+  "Field": {
+    "description": "Ties a label, instructions and an error message to one form control.",
+    "related": ["Input", "PasswordInput", "Select", "Textarea"],
+    "anatomy": "<Field>\n  <FieldLabel />\n  <FieldControl>\n    <Input />\n  </FieldControl>\n  <FieldDescription />\n  <FieldError />\n</Field>",
+    "parts": {
+      "Field": [
+        { "name": "required", "type": "boolean", "default": "false", "description": "Adds `required` to the control; optional fields show \"(optional)\" in the label." },
+        { "name": "invalid", "type": "boolean", "default": "false", "description": "Set after validation finds a problem; shows FieldError and sets `aria-invalid`." },
+        { "name": "controlId", "type": "string", "default": "generated", "description": "id given to the control. An id set on the control itself wins." }
+      ],
+      "FieldControl": [{ "name": "children", "type": "ReactElement", "required": true, "description": "Exactly one control: Input, Textarea, PasswordInput or SelectTrigger." }],
+      "FieldDescription": [{ "name": "children", "type": "ReactNode", "description": "Instructions, formats and limits, linked through `aria-describedby`." }],
+      "FieldError": [{ "name": "children", "type": "ReactNode", "description": "What is wrong and how to fix it; rendered only while `invalid`." }]
+    }
+  },
+  "Input": {
+    "description": "Single-line text field.",
+    "related": ["Field", "PasswordInput", "Textarea"],
+    "anatomy": "<Field>\n  <FieldLabel />\n  <FieldControl>\n    <Input />\n  </FieldControl>\n</Field>",
+    "parts": {
+      "Input": [
+        { "name": "type", "type": "\"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"number\" | …", "default": "\"text\"", "description": "Native type; picks the right mobile keyboard. Use PasswordInput for passwords." },
+        { "name": "value", "type": "string", "description": "Controlled value." },
+        { "name": "defaultValue", "type": "string", "description": "Initial value when uncontrolled." },
+        { "name": "placeholder", "type": "string", "description": "An example value; never a replacement for the label." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Blocks editing." },
+        { "name": "autoComplete", "type": "string", "description": "Autofill hint, e.g. \"email\"." },
+        { "name": "onChange", "type": "(event: ChangeEvent) => void", "description": "Runs on every edit." }
+      ]
+    }
+  },
+  "Label": {
+    "description": "Names a form control; clicking it focuses or toggles the control.",
+    "related": ["Field", "Checkbox", "Switch"],
+    "anatomy": "<Label htmlFor=\"id\" />\n<Control id=\"id\" />",
+    "parts": {
+      "Label": [
+        { "name": "htmlFor", "type": "string", "required": true, "description": "The id of the control it names." },
+        { "name": "children", "type": "ReactNode", "required": true, "description": "Sentence-case text, no colon." }
+      ]
+    }
+  },
+  "PasswordInput": {
+    "description": "Password field with a button that shows or hides the characters.",
+    "related": ["Field", "Input"],
+    "anatomy": "<PasswordInput>\n  <Input />\n  <Button />\n</PasswordInput>",
+    "parts": {
+      "PasswordInput": [
+        { "name": "autoComplete", "type": "\"current-password\" | \"new-password\"", "default": "\"current-password\"", "description": "Signing in or creating a password." },
+        { "name": "showLabel", "type": "string", "default": "\"Show password\"", "description": "Button text while the password is hidden." },
+        { "name": "hideLabel", "type": "string", "default": "\"Hide password\"", "description": "Button text while the password is visible." },
+        { "name": "…input props", "type": "InputHTMLAttributes", "description": "Every Input prop except `type`." }
+      ]
+    }
+  },
+  "Select": {
+    "description": "Picks one option from a compact list.",
+    "related": ["Field", "Checkbox", "Tabs"],
+    "anatomy": "<Select>\n  <SelectTrigger>\n    <SelectValue />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectGroup>\n      <SelectLabel />\n      <SelectItem />\n    </SelectGroup>\n    <SelectSeparator />\n  </SelectContent>\n</Select>",
+    "parts": {
+      "Select": [
+        { "name": "value", "type": "string", "description": "Controlled value." },
+        { "name": "defaultValue", "type": "string", "description": "Initial value when uncontrolled." },
+        { "name": "onValueChange", "type": "(value: string) => void", "description": "Runs when an option is chosen." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Blocks opening." },
+        { "name": "required", "type": "boolean", "default": "false", "description": "A value is needed to submit." },
+        { "name": "name", "type": "string", "description": "Form field name." }
+      ],
+      "SelectTrigger": [{ "name": "size", "type": "\"sm\" | \"default\"", "default": "\"default\"", "description": "Field height." }],
+      "SelectValue": [{ "name": "placeholder", "type": "string", "description": "Shown before a value is chosen." }],
+      "SelectItem": [
+        { "name": "value", "type": "string", "required": true, "description": "Option value." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Option can't be chosen." }
+      ]
+    }
+  },
+  "Separator": {
+    "description": "A thin line between groups of content.",
+    "related": ["Card"],
+    "anatomy": "<Separator />",
+    "parts": {
+      "Separator": [
+        { "name": "orientation", "type": "\"horizontal\" | \"vertical\"", "default": "\"horizontal\"", "description": "Direction of the line." },
+        { "name": "decorative", "type": "boolean", "default": "true", "description": "Hidden from screen readers. Set `false` only when the line is the only boundary between groups." }
+      ]
+    }
+  },
+  "Skeleton": {
+    "description": "A placeholder shaped like content that is still loading.",
+    "related": ["Alert", "Table"],
+    "anatomy": "<div role=\"status\">Loading…</div>\n<Skeleton />",
+    "parts": {
+      "Skeleton": [{ "name": "className", "type": "string", "description": "Size and shape, e.g. \"h-4 w-40\" or \"size-10 rounded-full\"." }]
+    }
+  },
+  "Switch": {
+    "description": "Turns a setting on or off immediately.",
+    "related": ["Checkbox", "Label"],
+    "anatomy": "<Switch />\n<Label />",
+    "parts": {
+      "Switch": [
+        { "name": "checked", "type": "boolean", "description": "Controlled state." },
+        { "name": "defaultChecked", "type": "boolean", "default": "false", "description": "Initial state when uncontrolled." },
+        { "name": "onCheckedChange", "type": "(checked: boolean) => void", "description": "Runs when the state changes." },
+        { "name": "size", "type": "\"sm\" | \"default\"", "default": "\"default\"", "description": "Switch size." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Blocks changes." }
+      ]
+    }
+  },
+  "Table": {
+    "description": "Shows data compared across rows and columns.",
+    "related": ["Badge", "Card", "Skeleton"],
+    "anatomy": "<Table>\n  <TableCaption />\n  <TableHeader>\n    <TableRow>\n      <TableHead />\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell />\n    </TableRow>\n  </TableBody>\n  <TableFooter />\n</Table>",
+    "parts": {
+      "Table": [{ "name": "label", "type": "string", "description": "Names the scrolling region for screen readers when the table scrolls sideways." }],
+      "TableCaption": [{ "name": "children", "type": "ReactNode", "description": "What the data is. Always include one." }],
+      "TableHead": [{ "name": "scope", "type": "\"col\" | \"row\"", "default": "\"col\"", "description": "Which cells this header describes." }],
+      "TableRow": [{ "name": "data-state", "type": "\"selected\"", "description": "Highlights a selected row." }]
+    }
+  },
+  "Tabs": {
+    "description": "Switches between views of the same context.",
+    "related": ["Select", "Card"],
+    "anatomy": "<Tabs>\n  <TabsList>\n    <TabsTrigger />\n  </TabsList>\n  <TabsContent />\n</Tabs>",
+    "parts": {
+      "Tabs": [
+        { "name": "value", "type": "string", "description": "Controlled active tab." },
+        { "name": "defaultValue", "type": "string", "description": "Initial tab when uncontrolled." },
+        { "name": "onValueChange", "type": "(value: string) => void", "description": "Runs when the active tab changes." },
+        { "name": "orientation", "type": "\"horizontal\" | \"vertical\"", "default": "\"horizontal\"", "description": "Arrow keys follow the orientation." },
+        { "name": "activationMode", "type": "\"automatic\" | \"manual\"", "default": "\"automatic\"", "description": "Automatic opens the panel as arrows move (recommended)." }
+      ],
+      "TabsList": [{ "name": "variant", "type": "\"default\" | \"line\"", "default": "\"default\"", "description": "Pill or underline style." }],
+      "TabsTrigger": [
+        { "name": "value", "type": "string", "required": true, "description": "Matches a TabsContent value." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Tab can't be selected." }
+      ],
+      "TabsContent": [{ "name": "value", "type": "string", "required": true, "description": "Matches a TabsTrigger value." }]
+    }
+  },
+  "Textarea": {
+    "description": "Multi-line text field.",
+    "related": ["Field", "Input"],
+    "anatomy": "<Field>\n  <FieldLabel />\n  <FieldControl>\n    <Textarea />\n  </FieldControl>\n</Field>",
+    "parts": {
+      "Textarea": [
+        { "name": "value", "type": "string", "description": "Controlled value." },
+        { "name": "defaultValue", "type": "string", "description": "Initial value when uncontrolled." },
+        { "name": "placeholder", "type": "string", "description": "An example value; never a replacement for the label." },
+        { "name": "rows", "type": "number", "description": "Visible lines; the field also grows with its content." },
+        { "name": "maxLength", "type": "number", "description": "Character limit; state it before the person types." },
+        { "name": "disabled", "type": "boolean", "default": "false", "description": "Blocks editing." }
+      ]
+    }
+  }
+}
